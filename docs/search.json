@@ -4,7 +4,7 @@
     "href": "intro.html",
     "title": "Introduction",
     "section": "",
-    "text": "Testing using this. \\(x^2 + y^2 = 4x\\).\n\nx = [1,2,3,4]\n\nfor item in x:\n    print( item )\n\n1\n2\n3\n4",
+    "text": "In the first session, time was taken to understand the Ising Model and its implications, and understand some theory behind its use.\nTo initialise the project, Git was used to efficiently share files for the project, and Quarto was used to write the lab report (Git repository for Ising Model Code can be found here: https://github.com/jamesnrolfe/IsingModel).",
     "crumbs": [
       "Introduction"
     ]
