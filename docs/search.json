@@ -4,7 +4,7 @@
     "href": "intro.html",
     "title": "Introduction",
     "section": "",
-    "text": "Hello and welcome to my lab project, on the # Ising Model #.\n\nimport numpy as np",
+    "text": "Testing using this. \\(x^2 + y^2 = 4x\\).\n\nx = [1,2,3,4]\n\nfor item in x:\n    print item",
     "crumbs": [
       "Introduction"
     ]
