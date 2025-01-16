@@ -44,6 +44,9 @@
     "href": "intro.html",
     "title": "Introduction",
     "section": "",
-    "text": "Hello and welcome to my lab project, on the # Ising Model #.\n\nimport numpy as np"
+    "text": "Hello and welcome to my lab project, on the # Ising Model #.\n\nimport numpy as np",
+    "crumbs": [
+      "Introduction"
+    ]
   }
 ]
