@@ -4,7 +4,7 @@ project:
 
 
 website:
-  title: "Minimal Quarto Lab Book"
+  title: "Lab Book Ising Model"
   sidebar:
     smooth-scroll: true
     logo: img/logo.png
