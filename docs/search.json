@@ -13,8 +13,8 @@
     "objectID": "index.html#what-you-need",
     "href": "index.html#what-you-need",
     "title": "Lab book in Quarto",
-    "section": "1 What you need ?",
-    "text": "1 What you need ?\n\nA quarto installation, e.g. from https://quarto.org\nA suitable editor (e.g. VSCode)\nAn account on Github (or similar services)\nSome knowledge of git",
+    "section": "1 What you need",
+    "text": "1 What you need\n\nnew information here\nA quarto installation, e.g. from https://quarto.org\nA suitable editor (e.g. VSCode)\nAn account on Github (or similar services)\nSome knowledge of git",
     "crumbs": [
       "Lab book in Quarto"
     ]
