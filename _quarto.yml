@@ -14,7 +14,7 @@ website:
     contents:
       - timeline.ipynb
       - intro.ipynb
-      
+      - theory.ipynb
 
 
 

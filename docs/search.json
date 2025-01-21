@@ -4,7 +4,10 @@
     "href": "theory.html",
     "title": "Theory",
     "section": "",
-    "text": "Describing the model\nConsider some lattice of atoms. In this lab, the main focus is on a square lattice in two dimensions.\nIt is assumed that each atom has a magnetic moment, or spin, of either up or down. More detailed models allow the atoms to be in “superpositions” of these two choices, but here it is assumed that they are one or the other. This spin is denoted $ _i = $, where spin up is \\(+1\\) and spin down is \\(-1\\)."
+    "text": "Describing the model\nConsider some lattice of atoms. In this lab, the main focus is on a square lattice in two dimensions.\nIt is assumed that each atom has a magnetic moment, or spin, of either up or down. More detailed models allow the atoms to be in “superpositions” of these two choices, but here it is assumed that they are one or the other. This spin is denoted $ _i = $, where spin up is \\(+1\\) and spin down is \\(-1\\).",
+    "crumbs": [
+      "Theory"
+    ]
   },
   {
     "objectID": "intro.html",
