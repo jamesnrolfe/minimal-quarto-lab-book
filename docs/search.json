@@ -1,5 +1,15 @@
 [
   {
+    "objectID": "timeline.html",
+    "href": "timeline.html",
+    "title": "Timeline",
+    "section": "",
+    "text": "Here the process of completing the lab will be laid out, with brief descriptions of what was done and when.\n\n0.1 16.01.2025\nFirst lab session\nThis session oversaw a brief introduction to the lab and its background, where the aim was to understand the main theory and ideas behind the Ising Model.\nTo initialise the project, Git was used to efficiently share files for the project, and Quarto was used to write the lab report.\n\n(Git repository for Ising Model Code can be found here: https://github.com/jamesnrolfe/IsingModel)",
+    "crumbs": [
+      "Timeline"
+    ]
+  },
+  {
     "objectID": "intro.html",
     "href": "intro.html",
     "title": "Introduction",
