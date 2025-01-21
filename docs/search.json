@@ -4,7 +4,7 @@
     "href": "timeline.html",
     "title": "Timeline",
     "section": "",
-    "text": "Here the process of completing the lab will be laid out, with brief descriptions of what was done and when.\n\n0.1 16.01.2025\nFirst lab session\nThis session oversaw a brief introduction to the lab and its background, where the aim was to understand the main theory and ideas behind the Ising Model.\nTo initialise the project, Git was used to efficiently share files for the project, and Quarto was used to write the lab report.\n\n(Git repository for Ising Model Code can be found here: https://github.com/jamesnrolfe/IsingModel)",
+    "text": "Here the process of completing the lab will be laid out, with brief descriptions of what was done and when.\n\n0.1 16.01.2025\nFirst lab session\nThis session oversaw a brief introduction to the lab and its background, where the aim was to understand the main theory and ideas behind the Ising Model.\nTo initialise the project, Git was used to efficiently share files for the project, and Quarto was used to write the lab report.\n\nGit repository for Ising Model Code can be found here: https://github.com/jamesnrolfe/IsingModel",
     "crumbs": [
       "Timeline"
     ]
@@ -14,7 +14,7 @@
     "href": "intro.html",
     "title": "Introduction",
     "section": "",
-    "text": "In the first session, time was taken to understand the Ising Model and its implications, and understand some theory behind its use.\nTo initialise the project, Git was used to efficiently share files for the project, and Quarto was used to write the lab report (Git repository for Ising Model Code can be found here: https://github.com/jamesnrolfe/IsingModel).",
+    "text": "The Ising model (or Lenz-Ising model) is a theoretical model often used to describe Magnetism, which is often best utilised numerically (in fact, it is currently impossible to solve generally). It helps to explain the effect of ferromagnetism, wherby magnetic moments align despite the removal of an applied magnetic field.\nIt also provides great insight into phase transitions, whereby a material changes state (such as water boiling in a kettle to become steam).\nThe Ising model has had many other uses, such as uses statistically modelling [neuron activity][1]\n[1]: Elad Schneidman; Michael J. Berry; Ronen Segev; William Bialek (2006), “Weak pairwise correlations imply strongly correlated network states in a neural population”, Nature, 440 (7087): 1007–1012, arXiv:q-bio/0512013, Bibcode:2006Natur.440.1007S, doi:10.1038/nature04701, PMC 1785327, PMID 16625187",
     "crumbs": [
       "Introduction"
     ]
