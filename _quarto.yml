@@ -12,7 +12,9 @@ website:
     search: true
     collapse-level: 1
     contents:
+      - timeline.ipynb
       - intro.ipynb
+      
 
 
 
