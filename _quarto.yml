@@ -24,5 +24,5 @@ format:
     grid:
       sidebar-width: 305px
     toc: true
-    number-chapters: true
-    number-sections: true
+    number-chapters: false
+    number-sections: false
