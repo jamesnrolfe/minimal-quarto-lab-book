@@ -1,12 +1,22 @@
 [
   {
-    "objectID": "theory.html",
-    "href": "theory.html",
-    "title": "Theory",
+    "objectID": "optimisations.html",
+    "href": "optimisations.html",
+    "title": "Optimisations",
     "section": "",
-    "text": "Describing the model\nConsider some lattice of atoms. In this lab, the main focus is on a square lattice in two dimensions.\nIt is assumed that each atom has a magnetic moment, or spin, of either up or down. More detailed models allow the atoms to be in “superpositions” of these two choices, but here it is assumed that they are one or the other. This spin is denoted\n\\[\\sigma_i = \\pm 1\\]\nwhere spin up is \\(+1\\) and spin down is \\(-1\\).\n\n\n\nA 2D square lattice, with atomic spins labelled.\n\n\nThe energy of the system can be represented using the Hamiltonian, usually defined as the sum of the potential and kinetic energy. Here, the energy depends on external fields, denoted \\(B\\), and also the nearest neighbour atomic spins. The latter is a result of it being energetically favourable for a spin to align with its neighbours. Thus, the Hamiltonian for the system can be defined as\n\\[\n    H=-\\sum_{i,j}J \\sigma_i \\sigma_j - \\sum_i B \\sigma_i\n\\]\nThe constant \\(J\\) represents the exchange energy, which is essentially the energy required to “flip” a spin. The minus sign in front of the first sum is to ensure that it is favourable for nearby spins to be aligned.",
+    "text": "A few optimisations were introduced to improve the speed of the code, allowing us to perform operations on larger system sizes in much shorter timeframes.\nFirstly, the Python library Numba was implemented to some functions, which drastically increased the speed at which the program executed. Numba is a just-in-time compiler, which compiles certain functions directly machine code, making them faster at runtime. Python is somewhat an interpreted language, which means that each line is “translated” into machine code before running. However, Python is actually compiled into bytecode before running, which is a simplified version similar to assembly; this is done to increase the interpretation speed. Regardless, compiling direct to machine code reduces the workload of the interpreter, and hence the function runs much faster.\nNumba doesn’t work particularly well with certain libraries and functions within Python, however it does work with Numpy, which is the primary maths module used here. Numpy is already fast at certain tasks (most parts that require fast computation are written in C or C++), and so this in combination with Numba should produce excellent results.\nIn fact, upon running functions with the Numbra wrapper enabled (mcmove as an example, the function to run the Monte Carlo evolution), evolving the system runs approximately 10 times faster - a massive speed increase.\nA few other quality-of-life optimisations were made. The code was refactored into separate Python files, and then imported into the main Jupyiter notebook for ease of access. New modules listed below were added to improve usability.\n\ntqdm provides loading bars for iteration in Python. This provides valuable information about roughly how long a loop will take to run, and hence time is not wasted waiting for a “random” amount of time.\nreload automatically refreshes imported files, which is critical here when using a Jupyiter notebook.\n\nAs well as this, the code was rewritten to include a more consistent and readable variable name structure, to improve its understandability and readability.",
     "crumbs": [
-      "Theory"
+      "Optimisations"
+    ]
+  },
+  {
+    "objectID": "timeline.html",
+    "href": "timeline.html",
+    "title": "Timeline",
+    "section": "",
+    "text": "Here the process of completing the lab will be laid out, with brief descriptions of what was done and when.\n\n16.01.2025\nFirst lab session\nThis session oversaw a brief introduction to the lab and its background, where the aim was to understand the main theory and ideas behind the Ising Model.\nTo initialise the project, Git was used to efficiently share files for the project, and Quarto was used to write the lab report.\n\nGit repository for Ising Model Code can be found here: https://github.com/jamesnrolfe/IsingModel",
+    "crumbs": [
+      "Timeline"
     ]
   },
   {
@@ -20,13 +30,13 @@
     ]
   },
   {
-    "objectID": "timeline.html",
-    "href": "timeline.html",
-    "title": "Timeline",
+    "objectID": "theory.html",
+    "href": "theory.html",
+    "title": "Theory",
     "section": "",
-    "text": "Here the process of completing the lab will be laid out, with brief descriptions of what was done and when.\n\n16.01.2025\nFirst lab session\nThis session oversaw a brief introduction to the lab and its background, where the aim was to understand the main theory and ideas behind the Ising Model.\nTo initialise the project, Git was used to efficiently share files for the project, and Quarto was used to write the lab report.\n\nGit repository for Ising Model Code can be found here: https://github.com/jamesnrolfe/IsingModel",
+    "text": "Describing the model\nConsider some lattice of atoms. In this lab, the main focus is on a square lattice in two dimensions.\nIt is assumed that each atom has a magnetic moment, or spin, of either up or down. More detailed models allow the atoms to be in “superpositions” of these two choices, but here it is assumed that they are one or the other. This spin is denoted\n\\[\\sigma_i = \\pm 1\\]\nwhere spin up is \\(+1\\) and spin down is \\(-1\\).\n\n\n\nA 2D square lattice, with atomic spins labelled.\n\n\nThe energy of the system can be represented using the Hamiltonian, usually defined as the sum of the potential and kinetic energy. Here, the energy depends on external fields, denoted \\(B\\), and also the nearest neighbour atomic spins. The latter is a result of it being energetically favourable for a spin to align with its neighbours. Thus, the Hamiltonian for the system can be defined as\n\\[\n    H=-\\sum_{i,j}J \\sigma_i \\sigma_j - \\sum_i B \\sigma_i\n\\]\nThe constant \\(J\\) represents the exchange energy, which is essentially the energy required to “flip” a spin. The minus sign in front of the first sum is to ensure that it is favourable for nearby spins to be aligned.",
     "crumbs": [
-      "Timeline"
+      "Theory"
     ]
   }
 ]

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Theory – Lab Book Ising Model</title>
+<title>Optimisations – Lab Book Ising Model</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -67,35 +67,6 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
@@ -108,7 +79,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./theory.html">Theory</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./optimisations.html">Optimisations</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -147,13 +118,13 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./theory.html" class="sidebar-item-text sidebar-link active">
+  <a href="./theory.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Theory</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./optimisations.html" class="sidebar-item-text sidebar-link">
+  <a href="./optimisations.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Optimisations</span></a>
   </div>
 </li>
@@ -162,21 +133,15 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#describing-the-model" id="toc-describing-the-model" class="nav-link active" data-scroll-target="#describing-the-model">Describing the model</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Theory</h1>
+<h1 class="title">Optimisations</h1>
 </div>
 
 
@@ -193,26 +158,18 @@ window.Quarto = {
 </header>
 
 
-<section id="describing-the-model" class="level3">
-<h3 class="anchored" data-anchor-id="describing-the-model">Describing the model</h3>
-<p>Consider some lattice of atoms. In this lab, the main focus is on a square lattice in two dimensions.</p>
-<p>It is assumed that each atom has a magnetic moment, or spin, of <em>either</em> up or down. More detailed models allow the atoms to be in “superpositions” of these two choices, but here it is assumed that they are one or the other. This spin is denoted</p>
-<p><span class="math display">\[\sigma_i = \pm 1\]</span></p>
-<p>where spin up is <span class="math inline">\(+1\)</span> and spin down is <span class="math inline">\(-1\)</span>.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="./images/lattice_spins.png" class="img-fluid figure-img"></p>
-<figcaption>A 2D square lattice, with atomic spins labelled.</figcaption>
-</figure>
-</div>
-<p>The energy of the system can be represented using the Hamiltonian, usually defined as the sum of the potential and kinetic energy. Here, the energy depends on external fields, denoted <span class="math inline">\(B\)</span>, and also the nearest neighbour atomic spins. The latter is a result of it being <em>energetically favourable</em> for a spin to align with its neighbours. Thus, the Hamiltonian for the system can be defined as</p>
-<p><span class="math display">\[
-    H=-\sum_{i,j}J \sigma_i \sigma_j - \sum_i B \sigma_i
-\]</span></p>
-<p>The constant <span class="math inline">\(J\)</span> represents the <strong>exchange energy</strong>, which is essentially the energy required to “flip” a spin. The minus sign in front of the first sum is to ensure that it is favourable for nearby spins to be aligned.</p>
+<p>A few optimisations were introduced to improve the speed of the code, allowing us to perform operations on larger system sizes in much shorter timeframes.</p>
+<p>Firstly, the Python library <strong>Numba</strong> was implemented to some functions, which drastically increased the speed at which the program executed. Numba is a <em>just-in-time compiler</em>, which compiles certain functions directly machine code, making them faster at runtime. Python is somewhat an <em>interpreted</em> language, which means that each line is “translated” into machine code before running. However, Python is actually compiled into <em>bytecode</em> before running, which is a simplified version similar to assembly; this is done to increase the interpretation speed. Regardless, compiling direct to machine code reduces the workload of the interpreter, and hence the function runs much faster.</p>
+<p>Numba doesn’t work particularly well with certain libraries and functions within Python, however it does work with <strong>Numpy</strong>, which is the primary maths module used here. <strong>Numpy</strong> is already fast at certain tasks (most parts that require fast computation are written in <strong>C</strong> or <strong>C++</strong>), and so this in combination with Numba should produce excellent results.</p>
+<p>In fact, upon running functions with the Numbra wrapper enabled (<code>mcmove</code> as an example, the function to run the Monte Carlo evolution), evolving the system runs approximately 10 times faster - a massive speed increase.</p>
+<p>A few other quality-of-life optimisations were made. The code was refactored into separate Python files, and then imported into the main Jupyiter notebook for ease of access. New modules listed below were added to improve usability.</p>
+<ol type="1">
+<li><p><strong>tqdm</strong> provides loading bars for iteration in Python. This provides valuable information about roughly how long a loop will take to run, and hence time is not wasted waiting for a “random” amount of time.</p></li>
+<li><p><strong>reload</strong> automatically refreshes imported files, which is critical here when using a Jupyiter notebook.</p></li>
+</ol>
+<p>As well as this, the code was rewritten to include a more consistent and readable variable name structure, to improve its understandability and readability.</p>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

@@ -16,5 +16,11 @@
   },
   "theory.ipynb": {
     "theory.html": "c980ea15"
+  },
+  "beginning_to_simulate.ipynb": {
+    "beginning_to_simulate.html": "e19065af"
+  },
+  "optimisations.ipynb": {
+    "optimisations.html": "df84e788"
   }
 }

@@ -15,6 +15,7 @@ website:
       - timeline.ipynb
       - intro.ipynb
       - theory.ipynb
+      - optimisations.ipynb
 
 
 
