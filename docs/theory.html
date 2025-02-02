@@ -174,6 +174,8 @@ window.Quarto = {
   <li><a href="#important-relations" id="toc-important-relations" class="nav-link" data-scroll-target="#important-relations">&nbsp;Important Relations</a></li>
   <li><a href="#single-spin-solution" id="toc-single-spin-solution" class="nav-link" data-scroll-target="#single-spin-solution">&nbsp; Single-spin Solution</a></li>
   <li><a href="#mean-field-theory" id="toc-mean-field-theory" class="nav-link" data-scroll-target="#mean-field-theory">Mean-field Theory</a></li>
+  <li><a href="#flaws-in-the-mean-field-picture" id="toc-flaws-in-the-mean-field-picture" class="nav-link" data-scroll-target="#flaws-in-the-mean-field-picture">Flaws in the Mean-field Picture</a></li>
+  <li><a href="#the-binder-cumulant" id="toc-the-binder-cumulant" class="nav-link" data-scroll-target="#the-binder-cumulant">The Binder Cumulant</a></li>
   </ul>
 </nav>
     </div>
@@ -308,6 +310,26 @@ window.Quarto = {
 <p>This suggests that in this case, we have some net magnetisation occurring - this is <strong>ferromagnetism</strong>! The solutions arise at <span class="math inline">\(k=1\)</span>, and hence</p>
 <p><span class="math display">\[ k=1 \Rightarrow nJ\beta = 1 \Rightarrow T_c = \frac{nJ}{k_B} \]</span></p>
 <p>where <span class="math inline">\(T_c\)</span> is some critical temperature at which ferromagnetism arises in our system.</p>
+</section>
+<section id="flaws-in-the-mean-field-picture" class="level3">
+<h3 class="anchored" data-anchor-id="flaws-in-the-mean-field-picture">Flaws in the Mean-field Picture</h3>
+<p>In the mean-field picture, we ignore all individual spins, instead chosing to use the average magnetisation. This in turn means that spins far from each other might be <em>less correlated</em> than spins close to each other - the exact local configuration around a site can be very different to one far away, and indeed the global average.</p>
+<p>At the critical temperature, these fluctuations become important.</p>
+<p>A useful measure is called the <strong>correlation length</strong> $ $. It measures the typical size of correlated regions, demonstrated in Fig. 5.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/k=correlation_length.png" class="img-fluid figure-img"></p>
+<figcaption>Fig. 5: An example of the correlation length of the system</figcaption>
+</figure>
+</div>
+<p>Near the critical temperature, <span class="math inline">\(\xi \to \infin\)</span> . Because we consider <em>finite-sized systems</em> when simulating the Ising model, the correlation length vastly dominates over the system-length, and so we observe <em>scale-invariance</em> in the fluctuations. This implies that all systems (regardless of size) have similar behaviour at <span class="math inline">\(T_c\)</span>.</p>
+</section>
+<section id="the-binder-cumulant" class="level3">
+<h3 class="anchored" data-anchor-id="the-binder-cumulant">The Binder Cumulant</h3>
+<p>We introduce the <strong>Binder cumulant</strong> <span class="math inline">\(U_4\)</span> to quantify “how <em>different</em> do distributions look?”. It is defined as</p>
+<p><span class="math display">\[ U_4 = 1 - \frac{\langle D^4 \rangle}{3 \langle D^2 \rangle^2} \]</span></p>
+<p>where $D^4$ and $D^2 $ are the fourth and second moments of the distribution <span class="math inline">\(D\)</span>.</p>
+<p>This means that there is a way to quantitavely measure how the magnetisation fluctuates over time, and compare it to systems of different sizes. As stated previously, at the critical temperature, all systems should behave similarly, and so should provide similar distributions. A “crossing-point” can be observed at <span class="math inline">\(T=T_c\)</span> from which the critical temperature can be measured.</p>
 
 
 </section>
