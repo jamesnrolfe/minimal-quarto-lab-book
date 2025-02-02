@@ -168,6 +168,7 @@ window.Quarto = {
    
   <ul>
   <li><a href="#describing-the-model" id="toc-describing-the-model" class="nav-link active" data-scroll-target="#describing-the-model">Describing the model</a></li>
+  <li><a href="#entropy-and-free-energy" id="toc-entropy-and-free-energy" class="nav-link" data-scroll-target="#entropy-and-free-energy">Entropy and Free Energy</a></li>
   </ul>
 </nav>
     </div>
@@ -210,6 +211,41 @@ window.Quarto = {
     H=-\sum_{i,j}J \sigma_i \sigma_j - \sum_i B \sigma_i
 \]</span></p>
 <p>The constant <span class="math inline">\(J\)</span> represents the <strong>exchange energy</strong>, which is essentially the energy required to “flip” a spin. The minus sign in front of the first sum is to ensure that it is favourable for nearby spins to be aligned.</p>
+<p>###&nbsp;Principles of Statistical Physics</p>
+<p>If we consider systems at fixed temperatures, then we can use the <strong>Boltzmann law</strong> to determine what the probability of each <em>microstate</em> is</p>
+<p><span class="math display">\[ p = \frac 1Z \exp \bigg (-\frac{H}{k_BT}\bigg) \]</span></p>
+<p>where <span class="math inline">\(H\)</span> is the Hamiltonian described above, defining the energy of that microstate.</p>
+<p>A microstate, as opposed to a <em>macrostate</em>, is a specific arrangement of all the particles in a system at a point in time. A macrostate, on the other hand, uses few properties to describe the state of the whole system, for example <em>temperature</em> or <em>pressure</em>. A single macrostate can correspond to many different microstates.</p>
+<p>In our case, a microstate will be a list of all the values of the spins of each particle.</p>
+<p>We can use the probability of certain outcomes to determine statistical averages. For example, the average energy $U=H $ is given by</p>
+<p><span class="math display">\[ U = \frac1Z \sum H \exp \bigg (-\frac{H}{k_BT}\bigg) \]</span></p>
+<p>and the average value of the spin on atom <span class="math inline">\(i\)</span> is</p>
+<p><span class="math display">\[ \lang \sigma_i \rang = \frac1Z \sum \sigma_i \exp \bigg (-\frac{H}{k_BT}\bigg ) \]</span></p>
+</section>
+<section id="entropy-and-free-energy" class="level3">
+<h3 class="anchored" data-anchor-id="entropy-and-free-energy">Entropy and Free Energy</h3>
+<p>The <em>entropy</em> of the system can be found via <strong>Shannon’s formula</strong></p>
+<p><span class="math display">\[ S = -k_B\sum p \ln p\]</span></p>
+<p>where <span class="math inline">\(p\)</span> is the probability of microstates occuring - as demonstrated above.</p>
+<p>We can also calculate the <em>free energy</em> as</p>
+<p><span class="math display">\[ F = U -TS\]</span></p>
+<p>This is useful when we consider systems at a given temperature. F is a natural function of temperature (as well as other factors such as the magnetic field). Hence we can differentiate:</p>
+<p><span class="math display">\[ dF = dU - SdT \]</span></p>
+<p>and hence the entropy is found via</p>
+<p><span class="math display">\[ S = \frac{\partial F}{\partial T} \]</span></p>
+<p>###&nbsp;Magnetisation</p>
+<p>The total magnetisation of the sample is the combined sum of the spins of each particle $_i $, and so</p>
+<p><span class="math display">\[ M = \frac1Z \sum \sigma_i \exp \bigg (-\frac{H}{k_BT}\bigg ) \]</span></p>
+<p>For the Ising Hamiltonian here, we can write</p>
+<p><span class="math display">\[ \sum_i \lang \sigma_i\rang = \frac{\partial \lang H \rang}{\partial B} \]</span></p>
+<p>and so $ M = $, or in terms of the free energy, $M = $.</p>
+<p>This then implies that</p>
+<p><span class="math display">\[ dF = -SdT + M dB \]</span></p>
+<p>Then we can consider the free energy as $F = F(T,B) $.</p>
+<p>###&nbsp;Important Relations</p>
+<p>There are some simple ways to rewrite the equations above in terms of the partition function <span class="math inline">\(Z\)</span> only.</p>
+<p><span class="math display">\[ U = -\frac{\partial \ln Z}{\delta \beta} \quad \text{and} \quad F = -\frac{1}{\beta} \ln Z \]</span></p>
+<p>where $= $.</p>
 
 
 </section>
