@@ -172,6 +172,8 @@ window.Quarto = {
   <li><a href="#entropy-and-free-energy" id="toc-entropy-and-free-energy" class="nav-link" data-scroll-target="#entropy-and-free-energy">Entropy and Free Energy</a></li>
   <li><a href="#magnetisation" id="toc-magnetisation" class="nav-link" data-scroll-target="#magnetisation">&nbsp;Magnetisation</a></li>
   <li><a href="#important-relations" id="toc-important-relations" class="nav-link" data-scroll-target="#important-relations">&nbsp;Important Relations</a></li>
+  <li><a href="#single-spin-solution" id="toc-single-spin-solution" class="nav-link" data-scroll-target="#single-spin-solution">&nbsp; Single-spin Solution</a></li>
+  <li><a href="#mean-field-theory" id="toc-mean-field-theory" class="nav-link" data-scroll-target="#mean-field-theory">Mean-field Theory</a></li>
   </ul>
 </nav>
     </div>
@@ -206,7 +208,7 @@ window.Quarto = {
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="./images/lattice_spins.png" class="img-fluid figure-img"></p>
-<figcaption>A 2D square lattice, with atomic spins labelled.</figcaption>
+<figcaption>Fig. 1: A 2D square lattice, with atomic spins labelled.</figcaption>
 </figure>
 </div>
 <p>The energy of the system can be represented using the Hamiltonian, usually defined as the sum of the potential and kinetic energy. Here, the energy depends on external fields, denoted <span class="math inline">\(B\)</span>, and also the nearest neighbour atomic spins. The latter is a result of it being <em>energetically favourable</em> for a spin to align with its neighbours. Thus, the Hamiltonian for the system can be defined as</p>
@@ -255,6 +257,57 @@ window.Quarto = {
 <p>There are some simple ways to rewrite the equations above in terms of the partition function <span class="math inline">\(Z\)</span> only.</p>
 <p><span class="math display">\[ U = -\frac{\partial \ln Z}{\delta \beta} \quad \text{and} \quad F = -\frac{1}{\beta} \ln Z \]</span></p>
 <p>where $= $.</p>
+</section>
+<section id="single-spin-solution" class="level3">
+<h3 class="anchored" data-anchor-id="single-spin-solution">&nbsp; Single-spin Solution</h3>
+<p>If we consider a single spin only, the Hamiltonian is trivial.</p>
+<p><span class="math display">\[ H = -B\sigma \]</span></p>
+<p>There are only two microstates, corresponding to <span class="math inline">\(\sigma = \pm 1\)</span>, with corresponding energies <span class="math inline">\(\pm B\)</span>. Thefore, the partition function is</p>
+<p><span class="math display">\[ Z = \exp \bigg ( -B\beta \bigg) + \exp \bigg( +B\beta \bigg) \]</span></p>
+<p>and the average value of the spin is</p>
+<p><span class="math display">\[ \langle \sigma \rangle = \tanh B\beta \]</span></p>
+</section>
+<section id="mean-field-theory" class="level3">
+<h3 class="anchored" data-anchor-id="mean-field-theory">Mean-field Theory</h3>
+<p>Let’s return to the Hamiltonian from above</p>
+<p><span class="math display">\[
+    H=-\sum_{i,j}J \sigma_i \sigma_j - \sum_i B \sigma_i
+\]</span></p>
+<p>Assume that in the lattice, each spin $ _i $ experiences the effects of its neighbours as an average “effective” energy. We can then write the Hamiltonian (approximately) as</p>
+<p><span class="math display">\[     H=-\sum_{i,j}J \sigma_i \langle \sigma_j \rangle - \sum_i B \sigma_i \]</span></p>
+<p>We will then rearrage this as</p>
+<p><span class="math display">\[ H = -\sum _i \Big (B - J\sum _{j} \langle \sigma_j \rangle  \Big ) \sigma_i = -\sum_i B_{\text{eff}} \sigma_i \]</span></p>
+<p>where <span class="math inline">\(j\)</span> is a sum over the neighbours of <span class="math inline">\(i\)</span>.</p>
+<p>Each spin is equivalent, on average, and so the neighbouring spins will all have the same average spin $_j$. If there are <span class="math inline">\(n\)</span> neighbours, we get</p>
+<p><span class="math display">\[ B_\text{eff} = B- J\sum _{j} \langle \sigma_j \rangle = B + nJ\langle \sigma_i\rangle\]</span></p>
+<p>where $_i $ represents the average spin of the neighbours of spin <span class="math inline">\(i\)</span>.</p>
+<p>Combining this with the solution for the single-spin above, we find</p>
+<p><span class="math display">\[ \langle \sigma_i \rangle = \tanh \bigg ( \Big (B + nJ\langle \sigma_i \rangle\Big)\beta\bigg ) \]</span></p>
+<p>which can be solved by plotting both sides and observing intersections. Consider first the case when there is no applied magnetic field.</p>
+<p><span class="math display">\[ \langle \sigma_i \rangle = \tanh \bigg ( nJ\langle \sigma_i \rangle\beta\bigg ) \]</span></p>
+<p>Now observe Fig. 2-4, where both sides are plotted, with <span class="math inline">\(k = nJ\beta\)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/k=0_sigma_i.png" class="img-fluid figure-img"></p>
+<figcaption>Fig. 2: Solution when k=0</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/k=1_sigma_i.png" class="img-fluid figure-img"></p>
+<figcaption>Fig. 3: Solution when k=1</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/k=20_sigma_i.png" class="img-fluid figure-img"></p>
+<figcaption>Fig. 4: Solutions when k=20</figcaption>
+</figure>
+</div>
+<p>We can see there is always a trivial solution <span class="math inline">\(\langle \sigma_i\rangle= 0\)</span>. However, for <span class="math inline">\(k \gg 1\)</span> we see two more solutions arise, one positive and one negative.</p>
+<p>This suggests that in this case, we have some net magnetisation occurring - this is <strong>ferromagnetism</strong>! The solutions arise at <span class="math inline">\(k=1\)</span>, and hence</p>
+<p><span class="math display">\[ k=1 \Rightarrow nJ\beta = 1 \Rightarrow T_c = \frac{nJ}{k_B} \]</span></p>
+<p>where <span class="math inline">\(T_c\)</span> is some critical temperature at which ferromagnetism arises in our system.</p>
 
 
 </section>
