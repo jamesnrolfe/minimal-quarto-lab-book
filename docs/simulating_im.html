@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Optimisations – Lab Book Ising Model</title>
+<title>Simulating the Ising Model – Lab Book Ising Model</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -79,7 +79,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./optimisations.html">Optimisations</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Simulating the Ising Model</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -124,7 +124,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./optimisations.html" class="sidebar-item-text sidebar-link active">
+  <a href="./optimisations.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Optimisations</span></a>
   </div>
 </li>
@@ -150,7 +150,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Optimisations</h1>
+<h1 class="title">Simulating the Ising Model</h1>
 </div>
 
 
@@ -167,16 +167,7 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>A few optimisations were introduced to improve the speed of the code, allowing us to perform operations on larger system sizes in much shorter timeframes.</p>
-<p>Firstly, the Python library <strong>Numba</strong> was implemented to some functions, which drastically increased the speed at which the program executed. Numba is a <em>just-in-time compiler</em>, which compiles certain functions directly machine code, making them faster at runtime. Python is somewhat an <em>interpreted</em> language, which means that a line is “translated” into machine code as it is run. However, Python is actually compiled into <em>bytecode</em> before running, which is a simplified version similar to assembly; this is done to increase the interpretation speed. Regardless, compiling direct to machine code reduces the workload of the interpreter, and hence the function runs much faster.</p>
-<p>Numba doesn’t work particularly well with certain libraries and functions within Python, however it does work with <strong>Numpy</strong>, which is the primary maths module used here. Numpy is already fast at certain tasks (most parts that require fast computation are written in <strong>C</strong> or <strong>C++</strong>), and so this in combination with Numba should produce excellent results.</p>
-<p>In fact, upon running functions with the Numbra wrapper enabled (<code>mcmove</code> as an example, the function to run the Monte Carlo evolution), evolving the system runs approximately 10 times faster - a massive speed increase.</p>
-<p>A few other quality-of-life optimisations were made. The code was refactored into separate Python files, and then imported into the main Jupyiter notebook for ease of access. New modules listed below were added to improve usability.</p>
-<ol type="1">
-<li><p><strong>tqdm</strong> provides loading bars for iteration in Python. This provides valuable information about roughly how long a loop will take to run, and hence time is not wasted waiting for a “random” amount of time.</p></li>
-<li><p><strong>reload</strong> automatically refreshes imported files, which is critical here when using a Jupyiter notebook.</p></li>
-</ol>
-<p>As well as this, the code was rewritten to include a more consistent and readable variable name structure, to improve its understandability and readability.</p>
+<p>The prewritten code provided a baseline from which the Ising Model could be tested.</p>
 
 
 

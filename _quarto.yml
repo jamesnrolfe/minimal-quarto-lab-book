@@ -16,6 +16,8 @@ website:
       - intro.ipynb
       - theory.ipynb
       - optimisations.ipynb
+      - simulation_im.ipynb
+      - finding_tc.ipynb
 
 
 
