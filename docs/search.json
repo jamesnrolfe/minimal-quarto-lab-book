@@ -44,7 +44,10 @@
     "href": "simulating_im.html",
     "title": "Simulating the Ising Model",
     "section": "",
-    "text": "The prewritten code provided a baseline from which the Ising Model could be tested."
+    "text": "The prewritten code provided a baseline from which the Ising Model could be tested.",
+    "crumbs": [
+      "Simulating the Ising Model"
+    ]
   },
   {
     "objectID": "theory.html",
