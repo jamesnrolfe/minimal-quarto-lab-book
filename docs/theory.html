@@ -188,6 +188,7 @@ window.Quarto = {
   <li><a href="#mean-field-theory" id="toc-mean-field-theory" class="nav-link" data-scroll-target="#mean-field-theory">Mean-field Theory</a></li>
   <li><a href="#flaws-in-the-mean-field-picture" id="toc-flaws-in-the-mean-field-picture" class="nav-link" data-scroll-target="#flaws-in-the-mean-field-picture">Flaws in the Mean-field Picture</a></li>
   <li><a href="#the-binder-cumulant" id="toc-the-binder-cumulant" class="nav-link" data-scroll-target="#the-binder-cumulant">The Binder Cumulant</a></li>
+  <li><a href="#finite-size-scaling-critical-exponents" id="toc-finite-size-scaling-critical-exponents" class="nav-link" data-scroll-target="#finite-size-scaling-critical-exponents">Finite Size Scaling; Critical Exponents</a></li>
   </ul>
 </nav>
     </div>
@@ -342,6 +343,41 @@ window.Quarto = {
 <p><span class="math display">\[ U_4 = 1 - \frac{\langle D^4 \rangle}{3 \langle D^2 \rangle^2} \]</span></p>
 <p>where $ D^4$ and $ D^2 $ are the fourth and second moments of the distribution <span class="math inline">\(D\)</span>.</p>
 <p>This means that there is a way to quantitavely measure how the magnetisation fluctuates over time, and compare it to systems of different sizes. As stated previously, at the critical temperature, all systems should behave similarly, and so should provide similar distributions. A “crossing-point” can be observed at <span class="math inline">\(T=T_c\)</span> from which the critical temperature can be measured.</p>
+</section>
+<section id="finite-size-scaling-critical-exponents" class="level3">
+<h3 class="anchored" data-anchor-id="finite-size-scaling-critical-exponents">Finite Size Scaling; Critical Exponents</h3>
+<p><strong>Critical exponents</strong> are used to describe second order phase transitions. They characterise the behaviour of certain variables at the critical temperature.</p>
+<p><span class="math display">\[
+\begin{align}
+    M &amp;\propto |T-T_c|^\beta\\
+    \chi_M &amp;\propto |T-T_c|^{-\gamma}\\
+    C_V &amp;\propto |T-T_c|^{-\alpha}\\
+    \xi &amp;\propto |T-T_c|^{-\nu}
+\end{align}
+\]</span></p>
+<p>These critical exponents are known for the 2D Ising Model.</p>
+<p><span class="math display">\[
+\alpha=0, \quad \beta=0.125, \quad \gamma=1.75, \quad \nu=1
+\]</span></p>
+<p>Consider the Ising model that is simulated here. The systems are not infinite in size.</p>
+<p>As described above, the correlation length goes as</p>
+<p><span class="math display">\[
+\xi \propto |T-T_c|^{-\nu}
+\]</span></p>
+<p>for any system. However, since the maximum correlation length of a square system of side <span class="math inline">\(N\)</span> is just <span class="math inline">\(N\)</span>, there is some <em>effective</em> critical point at <span class="math inline">\(\xi = N\)</span>. This is reffered to as a <strong>pseudocritical point</strong>.</p>
+<p>So, it can be said that <span class="math inline">\(\xi \propto |T_c-T|^{-\nu}\)</span>, and hence at the pseudocritical point (<span class="math inline">\(\xi=N\)</span>, with <span class="math inline">\(T=T_c(N^2)\)</span>),</p>
+<p><span class="math display">\[
+    N\propto \bigg (T_c(N^2) - T_c(\infty)\bigg)^{-\nu} \quad \Rightarrow \quad \bigg(T_c(N^2) - T_c(\infty)\bigg) \propto N^{-1/\nu}
+\]</span></p>
+<p>where <span class="math inline">\(T_c(\infty)\)</span> is the true critical point, and <span class="math inline">\(T_c(N^2)\)</span> is the pseudocritical point in a system of area <span class="math inline">\(N^2\)</span>.</p>
+<p><span class="math inline">\(T_c(\infty)\)</span> is presumed unknown, and we wish to find <span class="math inline">\(\nu\)</span>. In order to do this, the magnetic susceptibility <span class="math inline">\(\chi_M\)</span> can be used. We can argue that the susceptibility will have a peak <em>shifted</em> from the critical point.</p>
+<p><span class="math display">\[
+\chi_{M,\text{peak}} \propto |T_c(N^2)-T_c(\infty)|^{-\gamma} \propto |T_c(N^2)-T_c(\infty)|^{-\gamma} \propto N^{\gamma/\nu}
+\]</span></p>
+<p>It follows that</p>
+<p><span class="math display">\[
+    \log \chi_{M,\text{peak}} =\frac{\gamma}{\nu}\log N
+\]</span> from which <span class="math inline">\(z=\gamma/\nu\)</span> can be found.</p>
 
 
 </section>
