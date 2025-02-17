@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Finding the Critical Temperature – Lab Book Ising Model</title>
+<title>Critical Exponents – Lab Book Ising Model</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,40 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -142,7 +108,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./finding_tc.html">Finding the Critical Temperature</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./critical_exponents.html">Critical Exponents</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -199,13 +165,13 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./finding_tc.html" class="sidebar-item-text sidebar-link active">
+  <a href="./finding_tc.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Finding the Critical Temperature</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./critical_exponents.html" class="sidebar-item-text sidebar-link">
+  <a href="./critical_exponents.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Critical Exponents</span></a>
   </div>
 </li>
@@ -214,15 +180,25 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#finding-the-maximum-value-of-the-susceptibility" id="toc-finding-the-maximum-value-of-the-susceptibility" class="nav-link active" data-scroll-target="#finding-the-maximum-value-of-the-susceptibility">Finding the maximum value of the susceptibility</a></li>
+  <li><a href="#error-on-the-maximum" id="toc-error-on-the-maximum" class="nav-link" data-scroll-target="#error-on-the-maximum">Error on the maximum</a></li>
+  <li><a href="#finding-the-first-critical-exponent" id="toc-finding-the-first-critical-exponent" class="nav-link" data-scroll-target="#finding-the-first-critical-exponent">Finding the first critical exponent</a></li>
+  <li><a href="#finding-the-second-critical-exponent" id="toc-finding-the-second-critical-exponent" class="nav-link" data-scroll-target="#finding-the-second-critical-exponent">Finding the second critical exponent</a></li>
+  <li><a href="#finding-the-third-critical-exponent" id="toc-finding-the-third-critical-exponent" class="nav-link" data-scroll-target="#finding-the-third-critical-exponent">Finding the third critical exponent</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Finding the Critical Temperature</h1>
+<h1 class="title">Critical Exponents</h1>
 </div>
 
 
@@ -239,46 +215,65 @@ window.Quarto = {
 </header>
 
 
-<p>Running the simulation, magnetisation and energy data were provided throughout the evolution of the system. This data had to carefully analysed to determine the “shape” of the distribution of each.</p>
-<p>First data must be pulled from the simulations, and then can be unpacked. This is done so via the <code>np.load</code> (and previously <code>np.save</code>) function, to efficiently store data.</p>
-<p>The data is unpacked into dictionaries for easy access and readability. Here, for the magnetisation, we store the mean magnetisation, the susceptibility (i.e.&nbsp;the variance of the magnetisation) and the Binder cumulant. For energy, we store the mean, the specific heat (i.e.&nbsp;the variance of the energy) and the Binder cumulant.</p>
-<p>Currently, the “warmup” period (i.e.&nbsp;the period for the magnetisation/energy to stabilise, or get to a resonable state) is arbitrarily set at 1500 steps. This should be modified later to vary depending on the size and temperature of each individual system.</p>
-<p>Below is an example for magnetisation.</p>
-<div id="cell-2" class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>warmup <span class="op">=</span> <span class="dv">1500</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> mag[warmup:]</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>            </span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>total_length <span class="op">=</span> <span class="bu">len</span>(m)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>sub_sample_length <span class="op">=</span> total_length<span class="op">//</span>nsplits</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>_mean,_chi,_kurt <span class="op">=</span> [],[],[]</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(nsplits):</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    _m <span class="op">=</span> m[i<span class="op">*</span>sub_sample_length:(i<span class="op">+</span><span class="dv">1</span>)<span class="op">*</span>sub_sample_length:freq]   </span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    _mean.append( _m.mean()<span class="op">/</span>N<span class="op">**</span><span class="dv">2</span> )           </span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    _chi.append( _m.var()<span class="op">/</span>T<span class="op">/</span>N<span class="op">**</span><span class="dv">2</span>)</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    binder <span class="op">=</span> <span class="dv">1</span><span class="op">-</span> np.mean(_m<span class="op">**</span><span class="dv">4</span>)<span class="op">/</span><span class="fl">3.</span><span class="op">/</span>np.mean(_m<span class="op">**</span><span class="dv">2</span>)<span class="op">**</span><span class="dv">2</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    _kurt.append( binder) </span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    mag_dict [(N,T)] <span class="op">=</span> {<span class="st">'mag_per_particle'</span>:(np.mean(_mean),np.std(_mean)),</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>                        <span class="st">'chi_per_particle'</span>:(np.mean(_chi),np.std(_chi)),</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>                        <span class="st">'kurtosis'</span>: (np.mean(_kurt),np.std(_kurt))</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>                                           }</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><code>mag_dict</code> stores all the information related to the magnetic field. <code>n_splits</code> determines how many times the magnetisation/energy is “subsample”, in order to estimate the error, with frequency determining how many points to select from the range.</p>
-<p>With this data, graphs of Binder Cumulant/Kurtosis against temperature can be plotted. As mentioned in <em>Theory.Binder Cumulant</em>, at the critical temperature, the kurtosis of each system size should be the same - <em>scale-invariance</em> is observed, due to the correlation length tending to infinity at this point.</p>
-<p>We can fit polynomials to the data to better see the intersection, taking care to ensure the critical temperature is near the midpoint of the temperature domain, such that the polynomial fit is accurate.</p>
+<p>The critical exponents, as outlined in the theory section, are another way to find <span class="math inline">\(T_c\)</span>, and also generally help to describe the behaviour of different macroscopic properties nearby the critical temperature.</p>
+<section id="finding-the-maximum-value-of-the-susceptibility" class="level3">
+<h3 class="anchored" data-anchor-id="finding-the-maximum-value-of-the-susceptibility">Finding the maximum value of the susceptibility</h3>
+<p>Finding the maximum value of the suscpetibility was critical to finding the critical exponents, as well as the value of <span class="math inline">\(T\)</span> for which they occur. As shown in Fig. 1, the susceptibility (here shown as <span class="math inline">\(\log\chi\)</span>) forms curves with certain peaks, which can be approximated by a polynomial.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="./images/mag_k-t_graph.png" class="img-fluid figure-img"></p>
-<figcaption>Fig. 1: A plot of Binder Cumulant against temperature for 6 systems of different size, with T between 2 &amp; 2.5.</figcaption>
+<p><img src="./images/sus_plot.png" class="img-fluid figure-img"></p>
+<figcaption>Fig. 1: Collected susceptibility data.</figcaption>
 </figure>
 </div>
-<p>This is reasonably close to the literature value of <span class="math inline">\(T_c = 2.269\text{K}\)</span> [ref needed].</p>
+<p>However, even by limiting the range, it was found that plotting a simple polynomial around some “guessed” peak was inacurate over many runs (important for the forthcoming bootstrap error method), due to the noise in the data. The <strong>Savitsky-Golay</strong> approach was used to smooth the data, then find a maximum from this smoothed data (see Fig. 2). It is much more consistent due to the smoothing, as well as having little effect on important properties, including peak height (which is important here)</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/savgol.png" class="img-fluid figure-img"></p>
+<figcaption>Fig. 2: Savitsky-Golay fitting for the susceptibility data, with peaks labelled.</figcaption>
+</figure>
+</div>
+</section>
+<section id="error-on-the-maximum" class="level3">
+<h3 class="anchored" data-anchor-id="error-on-the-maximum">Error on the maximum</h3>
+<p>The error can be estimated from the peak points by running a bootstrap method on the data. This essentially runs the fitting function multiple times, where the datapoints are skewed by a certain amount related to their error (specifically they are skewed by a normal distribution with standard deviation equal to their error). This means that error estimates come from the error on the original data points, which is important here. We also find error in the temperature values of the maximums.</p>
+</section>
+<section id="finding-the-first-critical-exponent" class="level3">
+<h3 class="anchored" data-anchor-id="finding-the-first-critical-exponent">Finding the first critical exponent</h3>
+<p>The first critical exponent to find is <span class="math inline">\(\nu\)</span>, as it can be found independently from the other parameters. This is done by plotting the <em>psuedocritical point</em> of each system against its size. From the Theory section, this should follow a relationship:</p>
+<p><span class="math display">\[
+\bigg(T_c(N^2) - T_c(\infty)\bigg) \propto N^{-1/\nu}
+\]</span></p>
+<p>or simply</p>
+<p><span class="math display">\[
+T_{ps} = T_c + AN^{-1/\nu}
+\]</span></p>
+<p>By using <code>scipy.optimize.curve_fit</code> and setting the fit function to the above equation, it can be found from this data that <span class="math inline">\(\nu = 1 \pm 0.064\)</span>, equalling the analytical value, as can be seen in Fig. 3.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/ps_temp_vs_size.png" class="img-fluid figure-img"></p>
+<figcaption>Fig. 3: Pseudocritical temperature vs.&nbsp;system size, demonstrating the exponent p = -1, as expected in the theory.</figcaption>
+</figure>
+</div>
+<p>Also seen in Fig. 3 is a resonably good estimate of the critical temperature (as it arrives from the fit parameters).</p>
+</section>
+<section id="finding-the-second-critical-exponent" class="level3">
+<h3 class="anchored" data-anchor-id="finding-the-second-critical-exponent">Finding the second critical exponent</h3>
+<p>The second critical exponent to find is <span class="math inline">\(\gamma\)</span>, which can be computed from a log-log plot of <span class="math inline">\(\chi_\text{max}\)</span> aginst system size (as seen in the Theory section). The slope of this plot is equal to <span class="math inline">\(\gamma / \nu\)</span>, and since we know <span class="math inline">\(\nu=1\)</span>, is just equal to <span class="math inline">\(\gamma\)</span>. This can be seen in Fig. 4.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/max_chi_vs_size_loglog.png" class="img-fluid figure-img"></p>
+<figcaption>Fig. 4: A log-log plot of the maximum value of the susceptibility against system size. This finds m=1.726.</figcaption>
+</figure>
+</div>
+<p>This finds a slighlty unexpected value of <span class="math inline">\(\gamma = 1.726 \pm 0.005\)</span>. Whilst this is not far off, it is not perfect.</p>
+</section>
+<section id="finding-the-third-critical-exponent" class="level3">
+<h3 class="anchored" data-anchor-id="finding-the-third-critical-exponent">Finding the third critical exponent</h3>
+<p>The third critical exponent to find is <span class="math inline">\(\beta\)</span>. This is found in a very similar way to the previous two critical exponents.</p>
+<p>FINISH</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
