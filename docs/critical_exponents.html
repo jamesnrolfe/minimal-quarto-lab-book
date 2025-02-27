@@ -221,14 +221,14 @@ window.Quarto = {
 <p>Finding the maximum value of the suscpetibility was critical to finding the critical exponents, as well as the value of <span class="math inline">\(T\)</span> for which they occur. As shown in Fig. 1, the susceptibility (here shown as <span class="math inline">\(\log\chi\)</span>) forms curves with certain peaks, which can be approximated by a polynomial.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="./images/sus_plot.png" class="img-fluid figure-img"></p>
+<p><img src="./images/sus_plot_1.png" class="img-fluid figure-img"></p>
 <figcaption>Fig. 1: Collected susceptibility data.</figcaption>
 </figure>
 </div>
 <p>However, even by limiting the range, it was found that plotting a simple polynomial around some “guessed” peak was inacurate over many runs (important for the forthcoming bootstrap error method), due to the noise in the data. The <strong>Savitsky-Golay</strong> approach was used to smooth the data, then find a maximum from this smoothed data (see Fig. 2). It is much more consistent due to the smoothing, as well as having little effect on important properties, including peak height (which is important here)</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="./images/savgol.png" class="img-fluid figure-img"></p>
+<p><img src="./images/savgol_1.png" class="img-fluid figure-img"></p>
 <figcaption>Fig. 2: Savitsky-Golay fitting for the susceptibility data, with peaks labelled.</figcaption>
 </figure>
 </div>
@@ -256,7 +256,7 @@ T_{ps} = T_c + AN^{-1/\nu}
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="./images/log_ps_temp_vs_size.png" class="img-fluid figure-img"></p>
+<p><img src="./images/log_ps_temp_vs_size_1.png" class="img-fluid figure-img"></p>
 <figcaption>Fig. 4: Log-log plot of pseudocritical temperature versus system size, with values for the critical temperature, p and A from Fig 3 used to plot line of best fit and error.</figcaption>
 </figure>
 </div>
@@ -266,14 +266,14 @@ T_{ps} = T_c + AN^{-1/\nu}
 <p>The second critical exponent to find is <span class="math inline">\(\gamma\)</span>, which can be computed from a log-log plot of <span class="math inline">\(\chi_\text{max}\)</span> aginst system size (as seen in the Theory section). The slope of this plot is equal to <span class="math inline">\(\gamma / \nu\)</span>, and since we know <span class="math inline">\(\nu=1\)</span>, is just equal to <span class="math inline">\(\gamma\)</span>. This can be seen in Fig. 5-6.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="./images/max_chi_vs_size.png" class="img-fluid figure-img"></p>
+<p><img src="./images/max_chi_vs_size_1.png" class="img-fluid figure-img"></p>
 <figcaption>Fig. 5: A plot of the maximum value of the susceptibility against system size. This finds m=1.726.</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="./images/log_max_chi_vs_size.png" class="img-fluid figure-img"></p>
-<figcaption>Fig. 6: Log-log plot of maximum susceptibility versus system size, demonstrating a linear fit. Values of m and c from Fig. 5 are used to plot line of best fit and error.</figcaption>
+<p><img src="./images/log_max_chi_vs_size_1.png" class="img-fluid figure-img"></p>
+<figcaption>Fig. 6: Log-log plot of maximum susceptibility versus system size, fitted using a linear fit. Values of m and c from Fig. 5 are used to plot line of best fit and error.</figcaption>
 </figure>
 </div>
 <p>This finds a slighlty unexpected value of <span class="math inline">\(\gamma = 1.726 \pm 0.005\)</span>. Whilst this is not far off, it is not perfect.</p>
@@ -281,7 +281,12 @@ T_{ps} = T_c + AN^{-1/\nu}
 <section id="finding-the-third-critical-exponent" class="level3">
 <h3 class="anchored" data-anchor-id="finding-the-third-critical-exponent">Finding the third critical exponent</h3>
 <p>The third critical exponent to find is <span class="math inline">\(\beta\)</span>. This is found in a very similar way to the previous two critical exponents.</p>
-<p>FINISH</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/loglog_m_rms_vs_size.png" class="img-fluid figure-img"></p>
+<figcaption>Fig. 7: A log-log plot of the root-mean-square magnetisation versus system size, fitted using a linear fit.</figcaption>
+</figure>
+</div>
 
 
 </section>
