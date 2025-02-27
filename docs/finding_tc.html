@@ -276,27 +276,34 @@ window.Quarto = {
 <figcaption>Fig. 1: A plot of Binder Cumulant against temperature for 6 systems of different size, with T between 2 &amp; 2.5.</figcaption>
 </figure>
 </div>
-<p>This is reasonably close to the literature value of <span class="math inline">\(T_c = 2.269\text{K}\)</span> [ref needed]. However, the fitting is inconsistent due to the nature of polynomial fitting. This can especially be seen when using larger sets of points (see Fig. 2).</p>
+<p>This is reasonably close to the analytical value of <span class="math inline">\(T_c = 2.269\text{K}\)</span> [ref needed]. However, the fitting is inconsistent due to the nature of polynomial fitting. This can especially be seen when using larger sets of points (see Fig. 2).</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="./images/bad_fitting.png" class="img-fluid figure-img"></p>
 <figcaption>Fig. 2: Fitting with a larger number of plots. The range of values for the intersection is difficult, and anomalous fitting artifacts cause the critical temperature to stray from the true “intersection”.</figcaption>
 </figure>
 </div>
-<p>There are a few ways to potentially counteract this. One could simply limit the range of points that classify as “intersections”, however this is not a general solution (this is done in Fig. 1.). By lowering the degree of the polynomial fit, this could be improved, but the larger system sizes still caused issues with anomalous intersection points.</p>
+<p>There are a few ways to potentially counteract this. One could simply limit the range of points that classify as “intersections”, however this is not a general solution (this is done in Fig. 1). By lowering the degree of the polynomial fit, this could be improved, but the larger system sizes still caused issues with anomalous intersection points.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="./images/bad_fitting_2.png" class="img-fluid figure-img"></p>
 <figcaption>Fig. 3: Fitting with low degree polynomials. Large system sizes cause anomalous intersections to appear, skewing the critical temperature reading.</figcaption>
 </figure>
 </div>
-<p>A better approach to fitting was to use <code>numpy.spline</code> to fit a low-order polynomial between each pair of data points (completeley eliminating anomalous intersections), and then use a least-variance fit to determine the point of intersection i.e.&nbsp;the point at which all the lines are closet to each other.</p>
+<p>A better approach to fitting was to use <code>numpy.spline</code> to fit a low-order polynomial between each pair of data points as shown in Fig. 4 (completeley eliminating anomalous intersections), and then use a least-variance fit to determine the point of intersection i.e.&nbsp;the point at which all the lines are closet to each other.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="./images/recoprocal_variance.png" class="img-fluid figure-img"></p>
-<figcaption>Fig. 4: Finding the minimal variance between spline fits for each different system size. The peak demonstrates the closest value - i.e.&nbsp;the intersection point.</figcaption>
+<p><img src="insert image." class="img-fluid figure-img"></p>
+<figcaption>Fig. 4: Using spline fit to fit the data magnetisation data.</figcaption>
 </figure>
 </div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/reciprocal_variance.png" class="img-fluid figure-img"></p>
+<figcaption>Fig. 5: Finding the minimal variance between spline fits for each different system size. The peak demonstrates the closest value - i.e.&nbsp;the intersection point. This finds a critical temperature of 2.269…, within 5 decimal places of the analytical value.</figcaption>
+</figure>
+</div>
+<p>The bootstrap method can be used to estimate the error here, by running the fitting algorithm many times, with points randomly shifted according to their error.</p>
 
 
 
