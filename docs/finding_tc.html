@@ -283,6 +283,20 @@ window.Quarto = {
 <figcaption>Fig. 2: Fitting with a larger number of plots. The range of values for the intersection is difficult, and anomalous fitting artifacts cause the critical temperature to stray from the true “intersection”.</figcaption>
 </figure>
 </div>
+<p>There are a few ways to potentially counteract this. One could simply limit the range of points that classify as “intersections”, however this is not a general solution (this is done in Fig. 1.). By lowering the degree of the polynomial fit, this could be improved, but the larger system sizes still caused issues with anomalous intersection points.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/bad_fitting_2.png" class="img-fluid figure-img"></p>
+<figcaption>Fig. 3: Fitting with low degree polynomials. Large system sizes cause anomalous intersections to appear, skewing the critical temperature reading.</figcaption>
+</figure>
+</div>
+<p>A better approach to fitting was to use <code>numpy.spline</code> to fit a low-order polynomial between each pair of data points (completeley eliminating anomalous intersections), and then use a least-variance fit to determine the point of intersection i.e.&nbsp;the point at which all the lines are closet to each other.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/recoprocal_variance.png" class="img-fluid figure-img"></p>
+<figcaption>Fig. 4: Finding the minimal variance between spline fits for each different system size. The peak demonstrates the closest value - i.e.&nbsp;the intersection point.</figcaption>
+</figure>
+</div>
 
 
 
