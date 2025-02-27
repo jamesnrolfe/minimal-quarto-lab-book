@@ -247,11 +247,11 @@ window.Quarto = {
 <p><span class="math display">\[
 T_{ps} = T_c + AN^{-1/\nu}
 \]</span></p>
-<p>By using <code>scipy.optimize.curve_fit</code> and setting the fit function to the above equation, it can be found from this data that <span class="math inline">\(\nu = 1 \pm 0.064\)</span>, equalling the analytical value, as can be seen in Fig. 3-4.</p>
+<p>By using <code>scipy.optimize.curve_fit</code> and setting the fit function to the above equation, it can be found from this data that <span class="math inline">\(\nu = 1.00 \pm 0.07\)</span>, equalling the analytical value, as can be seen in Fig. 3-4.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="./images/ps_temp_vs_size_1.png" class="img-fluid figure-img"></p>
-<figcaption>Fig. 3: Pseudocritical temperature vs.&nbsp;system size, as expected in the theory. Fitted using <span class="math inline">\(T_{ps}=T_c + N^{-1/\nu}\)</span></figcaption>
+<figcaption>Fig. 3: Pseudocritical temperature vs.&nbsp;system size, as expected in the theory. Fitted using <span class="math inline">\(T_{ps}=T_c + AN^{-1/\nu}\)</span> with values $T_c=2.2742 , <span class="math inline">\(1/\nu = 1.00 \pm 0.07\)</span>, and <span class="math inline">\(A=1.7 \pm 0.5\)</span>.</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
@@ -260,14 +260,15 @@ T_{ps} = T_c + AN^{-1/\nu}
 <figcaption>Fig. 4: Log-log plot of pseudocritical temperature versus system size, with values for the critical temperature, p and A from Fig 3 used to plot line of best fit and error.</figcaption>
 </figure>
 </div>
+<p>The fitting method has a large error due to fitting directly to the data, rather than directly to the log-log plot as done for the other critical exponenets. This was done because <span class="math inline">\(T_c\)</span> was assumed unknown before, and in order to observe a linear relationship in the log plot, this value must be subtraceted from each <span class="math inline">\(T_{ps}\)</span>. Hence, fitting directly in Fig. 3. was necessary to determine this first, as well as the other factors - however as discussed this then leads to a large error due to the nature of this fit. Regardless, a value of <span class="math inline">\(\nu = 1.00 \pm 0.07\)</span> (error on inverse is <span class="math inline">\(\Delta \nu = \nu^2 \Delta (1/\nu)\)</span>) is very close to the expected value of <span class="math inline">\(1\)</span> from the analytical solution.</p>
 </section>
 <section id="finding-the-second-critical-exponent" class="level3">
 <h3 class="anchored" data-anchor-id="finding-the-second-critical-exponent">Finding the second critical exponent</h3>
-<p>The second critical exponent to find is <span class="math inline">\(\gamma\)</span>, which can be computed from a log-log plot of <span class="math inline">\(\chi_\text{max}\)</span> aginst system size (as seen in the Theory section). The slope of this plot is equal to <span class="math inline">\(\gamma / \nu\)</span>, and since we know <span class="math inline">\(\nu=1\)</span>, is just equal to <span class="math inline">\(\gamma\)</span>. This can be seen in Fig. 5-6.</p>
+<p>The second critical exponent to find is <span class="math inline">\(\gamma\)</span>, which can be computed from a log-log plot of <span class="math inline">\(\chi_\text{max}\)</span> aginst system size (as seen in the Theory section). The slope of this plot is equal to <span class="math inline">\(\gamma / \nu\)</span>, and since we know <span class="math inline">\(\nu=1.00 \pm 0.07\)</span>, is just equal to <span class="math inline">\(\gamma\)</span> (plus the error on <span class="math inline">\(\mu\)</span>). This can be seen in Fig. 5-6.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="./images/max_chi_vs_size_1.png" class="img-fluid figure-img"></p>
-<figcaption>Fig. 5: A plot of the maximum value of the susceptibility against system size. This finds m=1.726.</figcaption>
+<figcaption>Fig. 5: A plot of the maximum value of the susceptibility against system size. This finds <span class="math inline">\(\gamma/\mu=1.726 \pm 0.005\)</span>.</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
@@ -276,7 +277,8 @@ T_{ps} = T_c + AN^{-1/\nu}
 <figcaption>Fig. 6: Log-log plot of maximum susceptibility versus system size, fitted using a linear fit. Values of m and c from Fig. 5 are used to plot line of best fit and error.</figcaption>
 </figure>
 </div>
-<p>This finds a slighlty unexpected value of <span class="math inline">\(\gamma = 1.726 \pm 0.005\)</span>. Whilst this is not far off, it is not perfect.</p>
+<p>The error on</p>
+<p>This finds a slighlty unexpected value of <span class="math inline">\(\gamma = 1.726 \pm 0.07\)</span> (error calculated via <span class="math inline">\(\Delta \gamma = \sqrt{(\Delta(\gamma/\nu))^2 + (\Delta (1/\nu))^2}\)</span>). Whilst this is not far off, it is not perfect.</p>
 </section>
 <section id="finding-the-third-critical-exponent" class="level3">
 <h3 class="anchored" data-anchor-id="finding-the-third-critical-exponent">Finding the third critical exponent</h3>
