@@ -67,6 +67,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -176,10 +205,14 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>The <em>Ising model</em> (or <em>Lenz</em>-Ising model) is a theoretical model often used to describe Magnetism, which is often best utilised numerically (in fact, it is currently impossible to solve generally). It helps to explain the effect of <em>ferromagnetism</em>, wherby magnetic moments align despite the removal of an applied magnetic field.</p>
-<p>It also provides great insight into <em>phase transitions</em>, whereby a material changes state (such as water boiling in a kettle to become steam).</p>
-<p>The Ising model has had many other uses, such as uses statistically modelling neuron activity [1] and hence a natural extension has been found with neural networks, as well as to model the motion of atoms in gases.</p>
-<p>[1]: Elad Schneidman; Michael J. Berry; Ronen Segev; William Bialek (2006), “Weak pairwise correlations imply strongly correlated network states in a neural population”, Nature, 440 (7087): 1007–1012, arXiv:q-bio/0512013, Bibcode:2006Natur.440.1007S, doi:10.1038/nature04701, PMC 1785327, PMID 16625187</p>
+<p>The <strong>Ising model</strong> (or <strong>Lenz-Ising model</strong>), first proposed by Wilhelm Lenz in the early 1920s [1], is a theoretical model used to describe magnetism. The model is developed on the concept of <em>spin</em>, in which each point on a lattice can have spin “up” or “down”. These spins favour alignment with their closest neighbours, and so the Ising model has been successful in explaining the emergence of <strong>ferromagnetism</strong>. Furthermore, the Ising model is relevant to the study of <strong>phase transitions</strong>, the processes through which a material changes is macroscopic state.</p>
+<p>The Ising model offers essential insight into <strong>critical behaviour</strong>, describing how systems behave close to critical points, and <strong>universailty</strong>, where different systems appear to demonstrate similar properties close to critical points.</p>
+<p>A student of Lenz, Ernst Ising successfully analytically solved the Ising model in one-dimension in 1925 [2], finding that in this case, assuming short-range interactions, there are no phase transitions. The two-dimension case also has a analytical solution for square lattices with no applied external magnetic field, found by Lars Onsager in 1944 [3]. Onsager discovered that a nonzero “critical temperature” <span class="math inline">\(T_c\)</span> is found - below which thermal fluctuations are insufficient to destroy spontaneous magnetisation (i.e.&nbsp;ferromagnetism). Systems have interesting properties at the critical temperature, often displaying <em>scale-invariance</em>. This critical temperature is key to statistical physics.</p>
+<p>Despite not having analytical solutions for higher dimensions, the Ising model can be explored numerically using methods such as Monte-Carlo simulations, where these critical phenomena can be observed.</p>
+<p>[1]: Lenz W. <em>Beitrag zum Verständnis der magnetischen Erscheinungen in festen Körpern</em> (1920) Z. Phys. 21, 613-615</p>
+<p>[2]: Ising E. <em>Beitrag zur Theorie des Ferromagnetismus</em> (1925) Z. Phys. 31, 253-258</p>
+<p>[3]: Onsager, L. <em>Crystal Statistics. I. A Two-Dimensional Model with an Order-Disorder Transition</em> (1944) Phys. Rev.&nbsp;65, 117</p>
+<p>[4]: Schneidman E., Berry M., J. Segev R., Bialek W. <em>Weak pairwise correlations imply strongly correlated network states in a neural population</em>, (2006) Nature, 440 (7087): 1007–1012</p>
 
 
 
