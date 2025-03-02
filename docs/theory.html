@@ -352,6 +352,7 @@ window.Quarto = {
 <p><span class="math display">\[ U_4 = 1 - \frac{\langle D^4 \rangle}{3 \langle D^2 \rangle^2} \]</span></p>
 <p>where <span class="math inline">\(\langle D^4 \rangle\)</span> and <span class="math inline">\(\langle D^2 \rangle\)</span> are the fourth and second moments of the distribution <span class="math inline">\(D\)</span>.</p>
 <p>This means that there is a way to quantitavely measure how the magnetisation fluctuates over time, and compare it to systems of different sizes. As stated previously, at the critical temperature, all systems should behave similarly, and so should provide similar distributions. A “crossing-point” can be observed at <span class="math inline">\(T=T_c\)</span> from which the critical temperature can be measured.</p>
+<p>The critical point will not be identical for all points. In theory, due to finite size scaling effects (see below), each system will reach criticality at different temperatures - however the Binder cumilant dramatically reduces these effects, and so as an approximation, all systems should have the same Binder cumulant at the critical temperature.</p>
 </section>
 <section id="finite-size-scaling-critical-exponents" class="level3">
 <h3 class="anchored" data-anchor-id="finite-size-scaling-critical-exponents">Finite Size Scaling; Critical Exponents</h3>
@@ -398,7 +399,7 @@ window.Quarto = {
 </section>
 <section id="the-swendsen-wang-algorithm" class="level3">
 <h3 class="anchored" data-anchor-id="the-swendsen-wang-algorithm">The Swendsen-Wang algorithm</h3>
-<p>The Swendsen-Wang algorithm provides a solution to critical slowing down. In contrast to the Metropolis algorithm, the SW algorithm flips entire “clusters” of spins simultanously, rather than individual spins. The SW algorithm has been shown to be thermodynamically <em>identical</em> to the Metropolis algorithm [2] (i.e.&nbsp;it also satisfies the <em>detailed balance</em> condition), which is due to the rules governing the formation of clusters in the algorithm.</p>
+<p>The Swendsen-Wang algorithm provides a solution to critical slowing down. In contrast to the Metropolis algorithm, the SW algorithm flips entire “clusters” of spins simultanously, rather than individual spins. The SW algorthim produces the same “Ising model statistics” to the Metopolis algorthm [2] (i.e.&nbsp;it also satisfies the <em>detailed balance</em> condition), which is due to the rules governing the formation of clusters in the algorithm.</p>
 <p>In order to create the clusters, the algorithm examines neighbouring spins. If two adjacent spins are aligned, then a “bond” is placed between them with a probability that depends on the temperature and the interaction strength (<span class="math inline">\(J\)</span>). In the case of the Ising model, the probability of bond formation is</p>
 <p><span class="math display">\[1-e^{-2J / k_BT}\]</span></p>
 <p>This process essentially clusters groups of correlated spins. Once this cluster is formed, it can be assigned a new spin value, for which every spin in the cluster is given - essentially flipping the whole cluster in one swoop. This means that the simualtion can make large-scale changes in a single step, efficiently reducing correlations that otherwise remain for long timescales.</p>
