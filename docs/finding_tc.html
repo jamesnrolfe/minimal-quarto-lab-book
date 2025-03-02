@@ -290,17 +290,23 @@ window.Quarto = {
 <figcaption>Fig. 3: Fitting with low degree polynomials. Large system sizes cause anomalous intersections to appear, skewing the critical temperature reading.</figcaption>
 </figure>
 </div>
-<p>A better approach to fitting was to use <code>numpy.spline</code> to fit a low-order polynomial between each pair of data points as shown in Fig. 4 (completeley eliminating anomalous intersections), and then use a least-variance fit to determine the point of intersection i.e.&nbsp;the point at which all the lines are closet to each other.</p>
+<p>A better approach to fitting was to use <code>numpy.spline</code> to fit a low-order polynomial between each pair of data points as shown in Fig. 4 (completeley eliminating anomalous intersections), and then use a least-variance fit to determine the point of intersection i.e.&nbsp;the point at which all the lines are closet to each other (Figs. 4,6).</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="./images/spline_mag.png" class="img-fluid figure-img"></p>
+<p><img src="./images/spline_mag_good.png" class="img-fluid figure-img"></p>
 <figcaption>Fig. 4: Using spline fit to fit the data magnetisation data.</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
+<p><img src="./images/spline_mag_zoomed.png" class="img-fluid figure-img"></p>
+<figcaption>Fig. 5: A closeup of the spline fitting for the data. Some fitting artifacts remain, however the critical point is clearly visible.</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
 <p><img src="./images/reciprocal_variance.png" class="img-fluid figure-img"></p>
-<figcaption>Fig. 5: Finding the minimal variance between spline fits for each different system size. The peak demonstrates the closest value - i.e.&nbsp;the intersection point. This finds a critical temperature of 2.269…, within 5 decimal places of the analytical value.</figcaption>
+<figcaption>Fig. 6: Finding the minimal variance between spline fits for each different system size. The peak demonstrates the closest value - i.e.&nbsp;the intersection point. This finds a critical temperature of 2.269…, within 5 decimal places of the analytical value.</figcaption>
 </figure>
 </div>
 <p>The bootstrap method can be used to estimate the error here, by running the fitting algorithm many times, with points randomly shifted according to their error.</p>
