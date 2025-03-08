@@ -309,7 +309,19 @@ window.Quarto = {
 <figcaption>Fig. 6: Finding the minimal variance between spline fits for each different system size. The peak demonstrates the closest value - i.e.&nbsp;the intersection point. This finds a critical temperature of 2.269…, within 5 decimal places of the analytical value.</figcaption>
 </figure>
 </div>
-<p>The bootstrap method can be used to estimate the error here, by running the fitting algorithm many times, with points randomly shifted according to their error.</p>
+<p>The bootstrap method can be used to estimate the error here, by running the fitting algorithm many times, with points randomly shifted according to their error. However the bootstrap method is not very useful for finding errors here, drastically reducing the actual mean value of <span class="math inline">\(T_c\)</span> that is found. This is not very useful.</p>
+<p>A better approach might be to consider pairwise crossings, and find the mean “crossing”. Continuing to use spline fits, each fit will have a point at which it crosses with every other fit. At this point, there will also be some error as a result of the error in the points creating this fit, which can then be propogated into the overall estimate of <span class="math inline">\(T_c\)</span>.</p>
+<p>Consider first just fits, between two system sizes <span class="math inline">\(L_i\)</span> and <span class="math inline">\(L_j\)</span>, with fits <span class="math inline">\(U_i\)</span> and <span class="math inline">\(U_j\)</span>. Then, we can define</p>
+<p><span class="math display">\[D_{ij}(T)=U_i(T)- U_j(T)\]</span></p>
+<p>implying that crossing between <span class="math inline">\(U_i\)</span> and <span class="math inline">\(U_j\)</span> occurs at <span class="math inline">\(D_{ij}(T_{c, ij})=0\)</span>. This can be found via a root finding function e.g.&nbsp;<code>scipy.brentq</code> to find a value of <span class="math inline">\(T_c\)</span> between these two fits.</p>
+<p>Then, to find the error in this crossing, can do a <strong>local linear approximation</strong>. Near the crossing <span class="math inline">\(T_{c,ij}\)</span>, <span class="math inline">\(D_{ij}\)</span> can be approximated via its Taylor expansion</p>
+<p><span class="math display">\[D_{ij}(T) \approx D_{ij}(T_{c,ij}+ \frac{dD_{ij}}{dT}\bigg|_{T_{c,ij}}(T-T_{c,ij})\]</span></p>
+<p>Since <span class="math inline">\(D_{ij}(T_{c,ij})=0\)</span> by definition, small fluctutuations in <span class="math inline">\(D_{ij}\)</span> cause shifts (which we label <span class="math inline">\(\Delta T_{c,ij}=(T-T_{c,ij})\)</span>).</p>
+<p>Let <span class="math inline">\(\Delta D_{ij}\)</span> be the standard error on <span class="math inline">\(D_{ij}\)</span>, which can be found simply by combining the errors on <span class="math inline">\(U_i\)</span> and <span class="math inline">\(U_j\)</span></p>
+<p><span class="math display">\[\Delta D_{ij}= \sqrt{(\Delta U_i)^2+(\Delta U_j)^2}\]</span></p>
+<p>This error corresponds to a “shift” in a <span class="math inline">\(D_{ij}\)</span>, which in turn will cause a shift in <span class="math inline">\(T\)</span> i.e.&nbsp;<span class="math inline">\(\Delta T\)</span>. Hence, we can rearrange the above to give</p>
+<p><span class="math display">\[\Delta T_{c,ij} \approx \frac{\Delta D_{ij}}{\frac{d D_{ij}}{dT}\Big |_{T_{c,ij}}}\]</span></p>
+<p>When finding the error, it is instructive to use the absolute value of the derivative in the denominator.</p>
 
 
 
