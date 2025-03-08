@@ -322,6 +322,13 @@ window.Quarto = {
 <p>This error corresponds to a “shift” in a <span class="math inline">\(D_{ij}\)</span>, which in turn will cause a shift in <span class="math inline">\(T\)</span> i.e.&nbsp;<span class="math inline">\(\Delta T\)</span>. Hence, we can rearrange the above to give</p>
 <p><span class="math display">\[\Delta T_{c,ij} \approx \frac{\Delta D_{ij}}{\frac{d D_{ij}}{dT}\Big |_{T_{c,ij}}}\]</span></p>
 <p>When finding the error, it is instructive to use the absolute value of the derivative in the denominator.</p>
+<p>Then, for each crossing, there will be a critical point <span class="math inline">\(T_{c,ij}\)</span> and its error. To combine them into a useful estimate for <span class="math inline">\(T_c\)</span>, we can use <strong>inverse-variance weighting</strong> to estimate the mean and its error. This is more effective than a simple average and standard deviation, as here we assign a weight to each crossing</p>
+<p><span class="math display">\[w_{ij}=\frac{1}{(\Delta T_{c,ij})^2}\]</span></p>
+<p>such that functions with larger errors contribute less to the overall mean. The weighted average is then given by</p>
+<p><span class="math display">\[T_c = \frac{\sum_{ij}(T_{c,ij}w_{ij})}{\sum_{ij}w_{ij}}\]</span></p>
+<p>with an error given by</p>
+<p><span class="math display">\[\Delta T_c = \sqrt{\frac{1}{\sum_{ij}w_{ij}}}\]</span></p>
+<p>This method avoids the shortcomings of the bootstrap method outline before, since it uses local fits and simple error progression, rather than artificially adding noise to estimate the error.</p>
 
 
 
