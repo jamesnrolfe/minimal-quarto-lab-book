@@ -19,6 +19,7 @@ website:
       - simulating_im.ipynb
       - finding_tc.ipynb
       - critical_exponents.ipynb
+      - discussion.ipynb
 
 
 

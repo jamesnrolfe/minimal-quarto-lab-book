@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Critical Exponents – Lab Book Ising Model</title>
+<title>Discussion – Lab Book Ising Model</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -108,7 +108,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./critical_exponents.html">Critical Exponents</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./discussion.html">Discussion</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -171,13 +171,13 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./critical_exponents.html" class="sidebar-item-text sidebar-link active">
+  <a href="./critical_exponents.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Critical Exponents</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./discussion.html" class="sidebar-item-text sidebar-link">
+  <a href="./discussion.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Discussion</span></a>
   </div>
 </li>
@@ -186,27 +186,15 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#finding-the-maximum-value-of-the-susceptibility" id="toc-finding-the-maximum-value-of-the-susceptibility" class="nav-link active" data-scroll-target="#finding-the-maximum-value-of-the-susceptibility">Finding the maximum value of the susceptibility</a></li>
-  <li><a href="#error-on-the-maximum" id="toc-error-on-the-maximum" class="nav-link" data-scroll-target="#error-on-the-maximum">Error on the maximum</a></li>
-  <li><a href="#finding-the-first-critical-exponent" id="toc-finding-the-first-critical-exponent" class="nav-link" data-scroll-target="#finding-the-first-critical-exponent">Finding the first critical exponent</a></li>
-  <li><a href="#finding-the-second-critical-exponent" id="toc-finding-the-second-critical-exponent" class="nav-link" data-scroll-target="#finding-the-second-critical-exponent">Finding the second critical exponent</a></li>
-  <li><a href="#finding-the-third-critical-exponent" id="toc-finding-the-third-critical-exponent" class="nav-link" data-scroll-target="#finding-the-third-critical-exponent">Finding the third critical exponent</a></li>
-  <li><a href="#finding-the-fourth-critical-exponent" id="toc-finding-the-fourth-critical-exponent" class="nav-link" data-scroll-target="#finding-the-fourth-critical-exponent">Finding the fourth critical exponent</a></li>
-  <li><a href="#discussion" id="toc-discussion" class="nav-link" data-scroll-target="#discussion">Discussion</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Critical Exponents</h1>
+<h1 class="title">Discussion</h1>
 </div>
 
 
@@ -223,104 +211,45 @@ window.Quarto = {
 </header>
 
 
-<p>The critical exponents, as outlined in the theory section, are another way to find <span class="math inline">\(T_c\)</span>, and also generally help to describe the behaviour of different macroscopic properties nearby the critical temperature.</p>
-<p>Here, system sizes of 8-256 were used (8, 16, 32, 48, 64, 128, 256).</p>
-<section id="finding-the-maximum-value-of-the-susceptibility" class="level3">
-<h3 class="anchored" data-anchor-id="finding-the-maximum-value-of-the-susceptibility">Finding the maximum value of the susceptibility</h3>
-<p>Finding the maximum value of the suscpetibility was critical to finding the critical exponents, as well as the value of <span class="math inline">\(T\)</span> for which they occur. As shown in Fig. 1, the susceptibility (here shown as <span class="math inline">\(\log\chi\)</span>) forms curves with certain peaks, which can be approximated by a polynomial.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="./images/sus_plot_1.png" class="img-fluid figure-img"></p>
-<figcaption>Fig. 1: Collected susceptibility data.</figcaption>
-</figure>
-</div>
-<p>However, even by limiting the range, it was found that plotting a simple polynomial around some “guessed” peak was inacurate over many runs (important for the forthcoming bootstrap error method), due to the noise in the data. The <strong>Savitsky-Golay</strong> approach was used to smooth the data, then find a maximum from this smoothed data (see Fig. 2). It is much more consistent due to the smoothing, as well as having little effect on important properties, including peak height (which is important here)</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="./images/savgol_1.png" class="img-fluid figure-img"></p>
-<figcaption>Fig. 2: Savitsky-Golay fitting for the susceptibility data, with peaks labelled.</figcaption>
-</figure>
-</div>
-</section>
-<section id="error-on-the-maximum" class="level3">
-<h3 class="anchored" data-anchor-id="error-on-the-maximum">Error on the maximum</h3>
-<p>The error can be estimated from the peak points by running a bootstrap method on the data. This essentially runs the fitting function multiple times, where the datapoints are skewed by a certain amount related to their error (specifically they are skewed by a normal distribution with standard deviation equal to their error). This means that error estimates come from the error on the original data points, which is important here. We also find error in the temperature values of the maximums.</p>
-<p>It was important to use a long range of <span class="math inline">\(T\)</span> here, because the lower system sizes needed “time” to reach their maximum. Clearly, if we only went to <span class="math inline">\(T=2.4\)</span> then the maximum for the <span class="math inline">\(8\times 8\)</span> system simply wouldn’t exist (in this range).</p>
-</section>
-<section id="finding-the-first-critical-exponent" class="level3">
-<h3 class="anchored" data-anchor-id="finding-the-first-critical-exponent">Finding the first critical exponent</h3>
-<p>The first critical exponent to find is <span class="math inline">\(\nu\)</span>, as it can be found independently from the other parameters. This is done by plotting the <em>psuedocritical point</em> of each system against its size. From the Theory section, this should follow a relationship:</p>
-<p><span class="math display">\[
-\bigg(T_c(N^2) - T_c(\infty)\bigg) \propto N^{-1/\nu}
-\]</span></p>
-<p>or simply</p>
-<p><span class="math display">\[
-T_{ps} = T_c + AN^{-1/\nu}
-\]</span></p>
-<p>By using <code>scipy.optimize.curve_fit</code> and setting the fit function to the above equation, it can be found from this data that <span class="math inline">\(\nu = 1.00 \pm 0.07\)</span>, equalling the analytical value, as can be seen in Fig. 3-4.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="./images/ps_temp_vs_size_1.png" class="img-fluid figure-img"></p>
-<figcaption>Fig. 3: Pseudocritical temperature vs.&nbsp;system size, as expected in the theory. Fitted using <span class="math inline">\(T_{ps}=T_c + AN^{-1/\nu}\)</span> with values $T_c=2.2742 , <span class="math inline">\(1/\nu = 1.00 \pm 0.07\)</span>, and <span class="math inline">\(A=1.7 \pm 0.5\)</span>.</figcaption>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="./images/log_ps_temp_vs_size_1.png" class="img-fluid figure-img"></p>
-<figcaption>Fig. 4: Log-log plot of pseudocritical temperature versus system size, with values for the critical temperature, p and A from Fig 3 used to plot line of best fit and error.</figcaption>
-</figure>
-</div>
-<p>The fitting method has a large error due to fitting directly to the data, rather than directly to the log-log plot as done for the other critical exponenets. This was done because <span class="math inline">\(T_c\)</span> was assumed unknown before, and in order to observe a linear relationship in the log plot, this value must be subtraceted from each <span class="math inline">\(T_{ps}\)</span>. Hence, fitting directly in Fig. 3. was necessary to determine this first, as well as the other factors - however as discussed this then leads to a large error due to the nature of this fit. Regardless, a value of <span class="math inline">\(\nu = 1.000 \pm 0.064\)</span> (error on inverse is <span class="math inline">\(\Delta \nu = \nu^2 \Delta (1/\nu)\)</span>) is very close to the expected value of <span class="math inline">\(1\)</span> from the analytical solution.</p>
-</section>
-<section id="finding-the-second-critical-exponent" class="level3">
-<h3 class="anchored" data-anchor-id="finding-the-second-critical-exponent">Finding the second critical exponent</h3>
-<p>The second critical exponent to find is <span class="math inline">\(\gamma\)</span>, which can be computed from a log-log plot of <span class="math inline">\(\chi_\text{max}\)</span> aginst system size (as seen in the Theory section). The slope of this plot is equal to <span class="math inline">\(\gamma / \nu\)</span>, and since we know <span class="math inline">\(\nu=1.00 \pm 0.07\)</span>, is just equal to <span class="math inline">\(\gamma\)</span> (plus the error on <span class="math inline">\(\mu\)</span>). This can be seen in Fig. 5-6.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="./images/max_chi_vs_size_1.png" class="img-fluid figure-img"></p>
-<figcaption>Fig. 5: A plot of the maximum value of the susceptibility against system size.</figcaption>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="./images/log_max_chi_vs_size_1.png" class="img-fluid figure-img"></p>
-<figcaption>Fig. 6: Log-log plot of maximum susceptibility versus system size, fitted using a linear fit. Values of m and c from Fig. 5 are used to plot line of best fit and error. This finds a slope of <span class="math inline">\(1.758 \pm 0.005\)</span>. The system of size <span class="math inline">\(256 \times 256\)</span> is excluded from the data here, as it does not follow the linear fit accurately.</figcaption>
-</figure>
-</div>
-<p>This finds a slighlty unexpected value of <span class="math inline">\(\gamma = 1.76 \pm 0.12\)</span> (error calculated via <span class="math inline">\(\Delta \gamma = \gamma \sqrt{(\frac{\Delta(\gamma/\nu)}{\gamma/\nu})^2 + (\frac{\Delta (1/\nu)}{1/\nu})^2}\)</span>). This is reasonable close to the expected value of 1.75, however it does have a large error, resulting from the large error on <span class="math inline">\(\mu\)</span>, which propogates into the error on <span class="math inline">\(\gamma\)</span>.</p>
-</section>
-<section id="finding-the-third-critical-exponent" class="level3">
-<h3 class="anchored" data-anchor-id="finding-the-third-critical-exponent">Finding the third critical exponent</h3>
-<p>The third critical exponent to find is <span class="math inline">\(\beta\)</span>. This is found in a very similar way to the previous two critical exponents.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="./images/loglog_Mrms_vs_size.png" class="img-fluid figure-img"></p>
-<figcaption>Fig. 7: A log-log plot of the root-mean-square magnetisation versus system size, fitted using a linear fit.</figcaption>
-</figure>
-</div>
-<p>This finds a value of <span class="math inline">\(\beta=0.1268\pm 0.0089\)</span> (using the same error formula as before). This is not far from the expected value of 0.125.</p>
-</section>
-<section id="finding-the-fourth-critical-exponent" class="level3">
-<h3 class="anchored" data-anchor-id="finding-the-fourth-critical-exponent">Finding the fourth critical exponent</h3>
-<p>The fourth and final critical exponent to find is <span class="math inline">\(\alpha\)</span>. This was notably more difficult to compute than the other three critical exponents, namely because it is smaller than all of them (analytically <span class="math inline">\(alpha=0\)</span>). To find it, we follow the same approach as with <span class="math inline">\(\gamma\)</span>, except now plotting the mamximum of the specific heat of each system, as can be seen in Fig. 10.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="./images/log_cv_vs_T.png" class="img-fluid figure-img"></p>
-<figcaption>Fig. 10: A plot of <span class="math inline">\(\log C_V\)</span> vs.&nbsp;<span class="math inline">\(T\)</span> for the different system sizes. Notice immediately how the smaller systems diverge from <span class="math inline">\(T_c\)</span> massively. This can also been seen for larger and larger systems. Sizes 128 and 256 are close together, and with larger systems, one would expect them to converge to the same point on the graph (computational limitations meant that these large systems could not be computed in a reasonable amount of time).</figcaption>
-</figure>
-</div>
-<p>Removing the smaller sizes (8, 16) due to their divergence from the expected result, and running bootstrap to find errors as before, a graph of <span class="math inline">\(\log C_V\)</span> against <span class="math inline">\(\log N\)</span> can be plotted, with the gradient being <span class="math inline">\(\alpha/\nu\)</span>, as can be seen in Fig. 11.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="./images/log_cv_vs_log_N.png" class="img-fluid figure-img"></p>
-<figcaption>Fig. 11: A plot of <span class="math inline">\(\log C_V\)</span> vs.&nbsp;<span class="math inline">\(\log N\)</span>. This produces a gradient of <span class="math inline">\(\alpha/\nu = 0.1447 \pm 0.0085\)</span>. An important note is that these systems do not produce a “flat” linear fit as we would expect from the analytical value of <span class="math inline">\(\alpha\)</span>.</figcaption>
-</figure>
-</div>
-<p>Using the gradient and the value of <span class="math inline">\(\nu\)</span> found earlier, it can be deduced that <span class="math inline">\(\alpha=0.145 \pm 0.013\)</span>, which is a relatively far deviation from the expected value of <span class="math inline">\(\alpha=0\)</span>. However, as discussed, this is likely due to using small system sizes, which diverge from the expected values of <span class="math inline">\(C_V\)</span> at the critical temperature. Looking at Fig. 11, it might not be too much of a stretch to say that it seems to be “flattening” out for larger systems, and so implementing more large systems into consideration would potentially drive <span class="math inline">\(\alpha\)</span> closer to its expected value.</p>
-</section>
-<section id="discussion" class="level3">
-<h3 class="anchored" data-anchor-id="discussion">Discussion</h3>
-<p>The crtical exponents here align with the expected values found analytically quite well. However, there is a large error due to the fitting done to originally find <span class="math inline">\(\nu\)</span>, which transpires into a large error on other critical exponents.</p>
+<p>Overall, the experiment produced some good, accurate results, summarised here for convenience.</p>
+<p><strong>Critical Temperature via Binder Cumulant results</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 38%">
+<col style="width: 24%">
+<col style="width: 37%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Method</th>
+<th>Result</th>
+<th><span class="math inline">\(\%\)</span> error from analytical value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Inv. Var. bootstrap (large range)</td>
+<td><span class="math inline">\(2.256 \pm 0.057\)</span></td>
+<td><span class="math inline">\(0.58\%\)</span></td>
+</tr>
+<tr class="even">
+<td>Inv. Var. bootstrap (low range)</td>
+<td><span class="math inline">\(2.26878 \pm 0.00058\)</span></td>
+<td><span class="math inline">\(0.018\%\)</span></td>
+</tr>
+<tr class="odd">
+<td>Weighted average pairwise</td>
+<td><span class="math inline">\(2.26894 \pm 0.00015\)</span></td>
+<td><span class="math inline">\(0.011\%\)</span></td>
+</tr>
+<tr class="even">
+<td>Extrapolating pairwise temps</td>
+<td><span class="math inline">\(2.26911 \pm 0.00024\)</span></td>
+<td><span class="math inline">\(0.0032\%\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Critical exponent Results</strong></p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -332,8 +261,8 @@ T_{ps} = T_c + AN^{-1/\nu}
 <tbody>
 <tr class="odd">
 <td><span class="math inline">\(\nu\)</span></td>
-<td>1.000</td>
-<td>0.064</td>
+<td>1.00</td>
+<td>0.07</td>
 </tr>
 <tr class="even">
 <td><span class="math inline">\(\gamma\)</span></td>
@@ -345,18 +274,11 @@ T_{ps} = T_c + AN^{-1/\nu}
 <td>0.1268</td>
 <td>0.0089</td>
 </tr>
-<tr class="even">
-<td><span class="math inline">\(\alpha\)</span></td>
-<td>0.145</td>
-<td>0.013</td>
-</tr>
 </tbody>
 </table>
-<p>The large error in the fitting for <span class="math inline">\(\nu\)</span> ultimately arises from a large error in the maximum susceptibility for the smaller system sizes, since they have much “flatter” distributions, and are more likely to have large shifts in a maximum. The smoothing function did help to avoid this somewhat and reduce the error, however it is still large. Removing these from the fitting also is not successful, since then the fit has too few data points to fit to and provides wildy innacurate results. A better approach then might be to use a finer range of system sizes (with more system sizes overall), however due to computational limitations this was deemed not plausible.</p>
-<p>Running the system for longer may also have stabilised the smaller systems, however, for the same reason stated above, this was deemed not plausible.</p>
+<p>Considering the critical temperature extrapolated from the pairwise crossings, it is clear that this result is in line with the theory (within <span class="math inline">\(0.0032\%\)</span> of the expected analytic value). This confirms that the Binder-cumulant crossing approach is reliable in pinpointing <span class="math inline">\(T_c\)</span> in the 2D Ising Model (with a square lattice).</p>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
