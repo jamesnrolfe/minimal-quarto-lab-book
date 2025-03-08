@@ -310,9 +310,9 @@ window.Quarto = {
 </figure>
 </div>
 <p>The bootstrap method can be used to estimate the error here, by running the fitting algorithm many times, with points randomly shifted according to their error. However the bootstrap method is not very useful for finding errors here, drastically reducing the actual mean value of <span class="math inline">\(T_c\)</span> that is found. The bootstrap method on this data finds a result of</p>
-<p><span class="math display">\[\text{Bootstrap with inverse variance method: } T_c = (2.256 \pm 0.057) \mathrm{K}\]</span></p>
+<p><span class="math display">\[\text{Bootstrap with inverse variance method: } T_c = (2.256 \pm 0.057) \]</span></p>
 <p>One approach to solving this might be to reduce the range of datapoints used, since larger temperatures have much larger error due to random thermal fluctuations. Limiting the range of temperatures to between 2.15-2.4K and using 25 datapoints, the value of <span class="math inline">\(T_c\)</span> found is</p>
-<p><span class="math display">\[\text{Bootstrap with inverse variance method (limited range)} T_c = (2.26878 \pm 0.00058 )\mathrm{K}\]</span></p>
+<p><span class="math display">\[\text{Bootstrap with inverse variance method (limited range)} T_c = (2.26878 \pm 0.00058 )\]</span></p>
 <p>A plot of the fits for the reduced temperature range is shown in Fig. 7.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -347,7 +347,7 @@ window.Quarto = {
 </figure>
 </div>
 <p>This leads to a value of <span class="math inline">\(T_c\)</span> to be</p>
-<p><span class="math display">\[\text{Weighted-average pairwise method: } T_c = (2.26894 \pm 0.00015)\mathrm{K}\]</span></p>
+<p><span class="math display">\[\text{Weighted-average pairwise method: } T_c = (2.26894 \pm 0.00015)\]</span></p>
 <p>Further, a improved method might be to extrapolate the results to the true critical temperature. As metioned in the Theory section, about finite size scaling, different systems experience some “pseudocritical temperature” as a result of their finite size, which differs from the true critical temperature, which occurs for a system of infinite size. By plotting a graph of the temperature found against the average inverse system size of the pair, the trend can be extrapolated to zero to find the “true critical temperature”. The results of this are shown in Fig. 9.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -356,7 +356,9 @@ window.Quarto = {
 </figure>
 </div>
 <p>This leads to a value of <span class="math inline">\(T_c\)</span> to be</p>
-<p><span class="math display">\[\text{Extrapolating pairwise temperatures method: } T_c = (2.26911 \pm 0.00024)\mathrm{K}\]</span></p>
+<p><span class="math display">\[\text{Extrapolating pairwise temperatures method: } T_c = (2.26911 \pm 0.00024)\]</span></p>
+<p>It is clear that this last method is closest to the true value of <span class="math inline">\(T_c\)</span> given analytically via</p>
+<p><span class="math display">\[T_c = \frac{2}{\ln{(1+\sqrt{2})}} \approx 2.26918531...\]</span></p>
 
 
 
