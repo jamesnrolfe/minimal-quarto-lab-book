@@ -67,6 +67,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -104,12 +133,6 @@ ul.task-list li input[type="checkbox"] {
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./timeline.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Timeline</span></a>
-  </div>
-</li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./intro.html" class="sidebar-item-text sidebar-link">
@@ -157,8 +180,16 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#algorithms" id="toc-algorithms" class="nav-link active" data-scroll-target="#algorithms">Algorithms</a></li>
+  <li><a href="#the-metropolis-algorithm" id="toc-the-metropolis-algorithm" class="nav-link" data-scroll-target="#the-metropolis-algorithm">The Metropolis algorithm</a></li>
+  <li><a href="#the-swendsen-wang-algorithm" id="toc-the-swendsen-wang-algorithm" class="nav-link" data-scroll-target="#the-swendsen-wang-algorithm">The Swendsen-Wang algorithm</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -183,8 +214,26 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p>The prewritten code provided a baseline from which the Ising Model could be tested. Adding the ability to run the simulation in the background (useful for larger / longer systems) and saving the files using <code>np.save</code> means that the simulation doesn’t need to be re-run each time data is analyses, meaning that computation time is only an issue once.</p>
+<section id="algorithms" class="level3">
+<h3 class="anchored" data-anchor-id="algorithms">Algorithms</h3>
+</section>
+<section id="the-metropolis-algorithm" class="level3">
+<h3 class="anchored" data-anchor-id="the-metropolis-algorithm">The Metropolis algorithm</h3>
+<p>The Metropolis algorithm is a method of flipping spins based on certain thermodynamic constraints. [1] It satisfies the <em>detailed balance</em> condition, ensuring that the transition probabilities between states lead to a stationary distribution equal to the Boltzmann distribution. Initially, the lattice is setup in some arbitrary configuration. Then, a spin is picked and it is proposed that its spin is flipped. If the flip <em>reduces</em> the energy of the system, then the move is accepted - this is physically allowed. If the flip <em>increases</em> the energy of the system, then it is only accepted with a probability <span class="math inline">\(e^{-\beta/\Delta E}\)</span> - accounting for random thermodynamic fluctuations that can permit this physically.</p>
+<p>The metropolis algorthim is seen to suffer from critical slowing down (see Theory).</p>
+</section>
+<section id="the-swendsen-wang-algorithm" class="level3">
+<h3 class="anchored" data-anchor-id="the-swendsen-wang-algorithm">The Swendsen-Wang algorithm</h3>
+<p>The Swendsen-Wang algorithm provides a solution to critical slowing down. In contrast to the Metropolis algorithm, the SW algorithm flips entire “clusters” of spins simultanously, rather than individual spins. The SW algorthim produces the same “Ising model statistics” to the Metopolis algorthm [2] (i.e.&nbsp;it also satisfies the <em>detailed balance</em> condition), which is due to the rules governing the formation of clusters in the algorithm.</p>
+<p>In order to create the clusters, the algorithm examines neighbouring spins. If two adjacent spins are aligned, then a “bond” is placed between them with a probability that depends on the temperature and the interaction strength (<span class="math inline">\(J\)</span>). In the case of the Ising model, the probability of bond formation is</p>
+<p><span class="math display">\[1-e^{-2J / k_BT}\]</span></p>
+<p>This process essentially clusters groups of correlated spins. Once this cluster is formed, it can be assigned a new spin value, for which every spin in the cluster is given - essentially flipping the whole cluster in one swoop. This means that the simualtion can make large-scale changes in a single step, efficiently reducing correlations that otherwise remain for long timescales.</p>
+<p>Computationally, cluster formation initially costs computation to form, however, the extra cost is generally compensated for by a reduction in autocorrelation time. The SW algorithm allows simlutaions that would take many more time-steps to be run without time-extensive simulations.</p>
+<p>[1]: Metropolis, N., Rosenbluth, A. W., Rosenbluth, M. N., Teller, A. H., Teller, E., <em>Equation of State Calculations by Fast Computing Machines</em>, (1953) Journal of Chemical Physics, 21(6), 1087–1092</p>
+<p>[2]: Swendsen, R. H. and Wang, J. S., <em>Nonuniversal Critical Dynamics in Monte Carlo Simulations</em>, (1987) Physical Review Letters, 58(2), 86–88</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
