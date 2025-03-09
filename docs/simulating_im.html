@@ -188,6 +188,7 @@ window.Quarto = {
   <li><a href="#algorithms" id="toc-algorithms" class="nav-link active" data-scroll-target="#algorithms">Algorithms</a></li>
   <li><a href="#the-metropolis-algorithm" id="toc-the-metropolis-algorithm" class="nav-link" data-scroll-target="#the-metropolis-algorithm">The Metropolis algorithm</a></li>
   <li><a href="#the-swendsen-wang-algorithm" id="toc-the-swendsen-wang-algorithm" class="nav-link" data-scroll-target="#the-swendsen-wang-algorithm">The Swendsen-Wang algorithm</a></li>
+  <li><a href="#seeing-the-difference" id="toc-seeing-the-difference" class="nav-link" data-scroll-target="#seeing-the-difference">Seeing the difference</a></li>
   </ul>
 </nav>
     </div>
@@ -229,6 +230,23 @@ window.Quarto = {
 <p><span class="math display">\[1-e^{-2J / k_BT}\]</span></p>
 <p>This process essentially clusters groups of correlated spins. Once this cluster is formed, it can be assigned a new spin value, for which every spin in the cluster is given - essentially flipping the whole cluster in one swoop. This means that the simualtion can make large-scale changes in a single step, efficiently reducing correlations that otherwise remain for long timescales.</p>
 <p>Computationally, cluster formation initially costs computation to form, however, the extra cost is generally compensated for by a reduction in autocorrelation time. The SW algorithm allows simlutaions that would take many more time-steps to be run without time-extensive simulations.</p>
+</section>
+<section id="seeing-the-difference" class="level3">
+<h3 class="anchored" data-anchor-id="seeing-the-difference">Seeing the difference</h3>
+<p>This can be seen by directly comparing the outputs of each algorithm.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/bad_csd.png" class="img-fluid figure-img"></p>
+<figcaption>Fig. 1: Observables for the Metropolis-Hastings algorithm.</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/better_csd.png" class="img-fluid figure-img"></p>
+<figcaption>Fig. 2: Observables for the Swendson-Wang algorithm.</figcaption>
+</figure>
+</div>
+<p>In Fig. 1, it is clear that around the critical temperature, the data becomes distored and messy due to the problem of critical slowing down, whereas this is not the case in Fig. 2. This can be explained via autocorrelation time, the Metropolis algorithm did not have enough time to explore all possible microstates, and so “averages” are not well defined compared to longer simulations. The Swendsen-Wang algorithm has a much shorted autocorrelation time, and thus has enough time to explore most microstates per unit simulation time.</p>
 <p>[1]: Metropolis, N., Rosenbluth, A. W., Rosenbluth, M. N., Teller, A. H., Teller, E., <em>Equation of State Calculations by Fast Computing Machines</em>, (1953) Journal of Chemical Physics, 21(6), 1087–1092</p>
 <p>[2]: Swendsen, R. H. and Wang, J. S., <em>Nonuniversal Critical Dynamics in Monte Carlo Simulations</em>, (1987) Physical Review Letters, 58(2), 86–88</p>
 
