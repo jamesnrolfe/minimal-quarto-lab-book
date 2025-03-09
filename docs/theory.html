@@ -193,8 +193,8 @@ window.Quarto = {
   <li><a href="#single-spin-solution" id="toc-single-spin-solution" class="nav-link" data-scroll-target="#single-spin-solution">&nbsp; Single-spin Solution</a></li>
   <li><a href="#mean-field-theory" id="toc-mean-field-theory" class="nav-link" data-scroll-target="#mean-field-theory">Mean-field Theory</a></li>
   <li><a href="#flaws-in-the-mean-field-picture" id="toc-flaws-in-the-mean-field-picture" class="nav-link" data-scroll-target="#flaws-in-the-mean-field-picture">Flaws in the Mean-field Picture</a></li>
-  <li><a href="#the-binder-cumulant" id="toc-the-binder-cumulant" class="nav-link" data-scroll-target="#the-binder-cumulant">The Binder Cumulant</a></li>
   <li><a href="#finite-size-scaling-critical-exponents" id="toc-finite-size-scaling-critical-exponents" class="nav-link" data-scroll-target="#finite-size-scaling-critical-exponents">Finite Size Scaling; Critical Exponents</a></li>
+  <li><a href="#the-binder-cumulant" id="toc-the-binder-cumulant" class="nav-link" data-scroll-target="#the-binder-cumulant">The Binder Cumulant</a></li>
   <li><a href="#critical-slowing-down" id="toc-critical-slowing-down" class="nav-link" data-scroll-target="#critical-slowing-down">Critical slowing down</a></li>
   </ul>
 </nav>
@@ -344,14 +344,6 @@ window.Quarto = {
 </div>
 <p>Near the critical temperature, <span class="math inline">\(\xi \to \infty\)</span> . Because we consider <em>finite-sized systems</em> when simulating the Ising model, the correlation length vastly dominates over the system-length, and so we observe <em>scale-invariance</em> in the fluctuations. This implies that all systems (regardless of size) have similar behaviour at <span class="math inline">\(T_c\)</span>.</p>
 </section>
-<section id="the-binder-cumulant" class="level3">
-<h3 class="anchored" data-anchor-id="the-binder-cumulant">The Binder Cumulant</h3>
-<p>We introduce the <strong>Binder cumulant</strong> <span class="math inline">\(U_4\)</span> to quantify “how <em>different</em> do distributions look?”. It is defined as</p>
-<p><span class="math display">\[ U_4 = 1 - \frac{\langle D^4 \rangle}{3 \langle D^2 \rangle^2} \]</span></p>
-<p>where <span class="math inline">\(\langle D^4 \rangle\)</span> and <span class="math inline">\(\langle D^2 \rangle\)</span> are the fourth and second moments of the distribution <span class="math inline">\(D\)</span>.</p>
-<p>This means that there is a way to quantitavely measure how the magnetisation fluctuates over time, and compare it to systems of different sizes. As stated previously, at the critical temperature, all systems should behave similarly, and so should provide similar distributions. A “crossing-point” can be observed at <span class="math inline">\(T=T_c\)</span> from which the critical temperature can be measured.</p>
-<p>The critical point will not be identical for all points. In theory, due to finite size scaling effects (see below), each system will reach criticality at different temperatures - however the Binder cumilant dramatically reduces these effects, and so as an approximation, all systems should have the same Binder cumulant at the critical temperature.</p>
-</section>
 <section id="finite-size-scaling-critical-exponents" class="level3">
 <h3 class="anchored" data-anchor-id="finite-size-scaling-critical-exponents">Finite Size Scaling; Critical Exponents</h3>
 <p><strong>Critical exponents</strong> are used to describe second order phase transitions. They characterise the behaviour of certain variables at the critical temperature.</p>
@@ -393,6 +385,21 @@ window.Quarto = {
 <p><span class="math display">\[
     M_{\mathrm{rms}} \propto N^{-\beta/\nu}
 \]</span></p>
+</section>
+<section id="the-binder-cumulant" class="level3">
+<h3 class="anchored" data-anchor-id="the-binder-cumulant">The Binder Cumulant</h3>
+<p>We introduce the <strong>Binder cumulant</strong> <span class="math inline">\(U_4\)</span> to quantify “how <em>different</em> do distributions look?”. It is defined as</p>
+<p><span class="math display">\[ U_4 = 1 - \frac{\langle D^4 \rangle}{3 \langle D^2 \rangle^2} \]</span></p>
+<p>where <span class="math inline">\(\langle D^4 \rangle\)</span> and <span class="math inline">\(\langle D^2 \rangle\)</span> are the fourth and second moments of the distribution <span class="math inline">\(D\)</span>.</p>
+<p>This means that there is a way to quantitavely measure how the magnetisation fluctuates over time, and compare it to systems of different sizes. As stated previously, at the critical temperature, all systems should behave similarly, and so should provide similar distributions. A “crossing-point” can be observed at <span class="math inline">\(T=T_c\)</span> from which the critical temperature can be measured.</p>
+<p>The critical point will not be identical for all points. In theory, due to finite size scaling effects (see below), each system will reach criticality at different temperatures - however the Binder cumilant dramatically reduces these effects, and so as an approximation, all systems should have the same Binder cumulant at the critical temperature.</p>
+<p>We can prove that the Binder cumulant will be indepent of <span class="math inline">\(N\)</span> using the scaling relations above. We have that</p>
+<p><span class="math display">\[M_{RMS} \propto N^{-\beta/\nu}\]</span></p>
+<p>Then it can be stated that</p>
+<p><span class="math display">\[\langle M^4 \rangle \propto N^{-4\beta/\nu}; \quad \langle M^2 \rangle \propto N^{-2\beta/\nu}\]</span></p>
+<p>such that</p>
+<p><span class="math display">\[ \kappa = 1 - \frac{\langle M^4 \rangle}{3 \langle M^2 \rangle^2} \]</span></p>
+<p>is independent of <span class="math inline">\(N\)</span>. Hence, the Binder cumulant approaches a scale-invariant, universal factor at <span class="math inline">\(T=T_c\)</span>.</p>
 </section>
 <section id="critical-slowing-down" class="level3">
 <h3 class="anchored" data-anchor-id="critical-slowing-down">Critical slowing down</h3>
